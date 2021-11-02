@@ -1,3 +1,5 @@
+package AddDatatoJTable;
+
 public class Course {
 
 
