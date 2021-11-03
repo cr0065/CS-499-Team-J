@@ -5,7 +5,11 @@
  */
 package AddDatatoJTable;
 
+import javax.swing.*;
+import java.io.File;
+import java.io.PrintStream;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -25,13 +29,13 @@ public class AddDataToJTable extends javax.swing.JFrame {
         Schedule schedule = new Schedule();
 
         // Assigns information for the room along with ID's
-        schedule.addRoom(1, "A", 50);
-        schedule.addRoom(2, "B", 50);
-        schedule.addRoom(3, "C", 50);
-        schedule.addRoom(4, "D", 55);
-        schedule.addRoom(5, "E", 50);
-        schedule.addRoom(6,"F", 50);
-        schedule.addRoom(7, "G", 50);
+        schedule.addRoom(1, "N327", 50);
+        schedule.addRoom(2, "N105", 50);
+        schedule.addRoom(3, "N218", 50);
+        schedule.addRoom(4, "N315", 55);
+        schedule.addRoom(5, "N308", 50);
+        schedule.addRoom(6,"N328", 50);
+        schedule.addRoom(7, "N324", 50);
 
         // Assigns information for the time slots *needs to remove the friday times and add proper times in place*
         schedule.addTimeslot(1, "MW 8:00 - 9:20");
@@ -48,23 +52,23 @@ public class AddDataToJTable extends javax.swing.JFrame {
         schedule.addTimeslot(12, "TR 4:20 - 5:40");
 
         // Assigns information for the professors along with preferred room and preferred time
-        schedule.addProfessor(1, "Kal Bugrara", 2,8);
-        schedule.addProfessor(2, "Robin Hilyard",2);
-        schedule.addProfessor(3, "Yusuf Ozbek",3);
-        schedule.addProfessor(4, "Vishal Chawla",1);
-        schedule.addProfessor(5, "Amuthan", 5, 6);
-        schedule.addProfessor(6, "Tejas Parikh", 1, 10);
-        schedule.addProfessor(7, "Jimmy Perkins",4);
+        schedule.addProfessor(1, "Hardin Danny", 2,8);
+        schedule.addProfessor(2, "Williamson James",2);
+        schedule.addProfessor(3, "Rochowiak Daniel",3);
+        schedule.addProfessor(4, "Poole Jeffrey",1);
+        schedule.addProfessor(5, "Allen Mary", 5, 6);
+        schedule.addProfessor(6, "Rochowiak Daniel", 1, 10);
+        schedule.addProfessor(7, "Newman Timothy",4);
 
         // Assigns information to the course the third field is assigning which professors can teach those classes
-        schedule.addCourse(1, "AA", "Algorithm", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(2, "DD", "Database", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(3, "CC", "Cloud Computing", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(4, "WD", "Web Development", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(5, "AE", "Application Engineering", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(6, "DS", "Data Science", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(7, "BI", "Business Intelligence", new int[]{1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(8, "JA", "Intro to JAVA", new int[] {1, 2, 3 ,4, 5, 6, 7});
+        schedule.addCourse(1, "CS326", "Algorithm", new int[] { 1, 2, 3 ,4, 5, 6, 7});
+        schedule.addCourse(2, "CS421", "Database", new int[] { 1, 2, 3 ,4, 5, 6, 7});
+        schedule.addCourse(3, "CS400", "Cloud Computing", new int[] { 1, 2, 3 ,4, 5, 6, 7});
+        schedule.addCourse(4, "CS218", "Web Development", new int[] { 1, 2, 3 ,4, 5, 6, 7});
+        schedule.addCourse(5, "CS310", "Application Engineering", new int[] { 1, 2, 3 ,4, 5, 6, 7});
+        schedule.addCourse(6, "CS421", "Data Science", new int[] { 1, 2, 3 ,4, 5, 6, 7});
+        schedule.addCourse(7, "CS303", "Business Intelligence", new int[]{1, 2, 3 ,4, 5, 6, 7});
+        schedule.addCourse(8, "CS121", "Intro to JAVA", new int[] {1, 2, 3 ,4, 5, 6, 7});
 
         // Assigns student group information
         schedule.addGroup(1, 20, new int[] { 1, 3, 4, 8});
@@ -124,6 +128,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
     public static void printClass(Schedule schedule, Class bestClass) {
         System.out.println("COURSE: " + schedule.getCourse(bestClass.getCourseId()).getCourseName());
+        //jScrollPane1.append("COURSE: " + schedule.getCourse(bestClass.getCourseId()).getCourseName());
         System.out.println("CLASSROOM: " + schedule.getRoom(bestClass.getRoomId()).getRoomNumber());
         System.out.println("PROFESSOR: " + schedule.getProfessor(bestClass.getProfessorId()).getProfessorName());
         System.out.println("TIMESLOT: " + schedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot());
@@ -238,7 +243,17 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.out.println("Hello World"); 
+        if (evt.getSource() == jButton1) {
+            final JFileChooser fc = new JFileChooser();
+            //In response to a button click:
+            int returnVal = fc.showOpenDialog(AddDataToJTable.this);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //This is where a real application would open the file.
+                System.out.println("Opening: " + file.getName());
+                Scanner input;
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

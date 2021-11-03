@@ -24,9 +24,6 @@ public class GeneticAlgorithm {
         this.tournSize = tournSize;
     }
 
-
-
-
    // fitness function
     public double calcFitness(Individual individual, Schedule schedule) {
 
@@ -41,10 +38,6 @@ public class GeneticAlgorithm {
         return fitness;
 
     }
-
-
-
-
 
     public boolean isTerminating(int generationsCount, int maxGenerations) {
         return (generationsCount > maxGenerations);
