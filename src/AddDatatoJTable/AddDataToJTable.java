@@ -75,12 +75,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
         schedule.addGroup(2, 30, new int[] { 2, 3, 5, 6, 8 });
         schedule.addGroup(3, 18, new int[] { 3, 4, 5 });
         schedule.addGroup(4, 25, new int[] { 1, 4 ,7});
-        schedule.addGroup(5, 20, new int[] { 2, 3, 5 });
-        schedule.addGroup(6, 22, new int[] { 1, 4, 5 });
-        schedule.addGroup(7, 16, new int[] { 1, 3, 8 });
-        schedule.addGroup(8, 18, new int[] { 2, 6 ,7, 8});
-        schedule.addGroup(9, 24, new int[] { 1, 6 });
-        schedule.addGroup(10, 25, new int[] { 3, 4 ,7});
 
         // Returns the created schedule
         return schedule;
@@ -291,7 +285,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
         while (ga.isTerminating(generation, 100) == false && ga.isTerminating(population) == false) {
 
-            System.out.println("Generation No." + generation + " Best fitness: " + population.getFittest(0).getFitness());
+            System.out.println("Generation No." + generation);
 
 
             population = ga.crossoverPopulation(population);
@@ -309,7 +303,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
         schedule.createClasses(population.getFittest(0));
         System.out.println();
         System.out.println("Solution found in " + generation + " generations");
-        System.out.println("Final solution fitness: " + population.getFittest(0).getFitness());
         System.out.println("Clashes: " + schedule.calcClashes(100));
 
         PrintClassAll(schedule);
