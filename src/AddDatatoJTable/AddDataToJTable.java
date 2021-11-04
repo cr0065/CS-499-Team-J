@@ -112,7 +112,9 @@ public class AddDataToJTable extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JTextPane();
+        jScrollPane1 = new javax.swing.JTextArea();
+        JScrollPane scroll = new JScrollPane (jScrollPane1);
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -158,7 +160,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(scroll)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -180,7 +182,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -262,7 +264,19 @@ public class AddDataToJTable extends javax.swing.JFrame {
         else{
             showMessageDialog(null, "Schedule Generation Successful", "Notification", JOptionPane.INFORMATION_MESSAGE);
         }
-        PrintClassAll(schedule);
+
+        Class classes[] = schedule.getClasses();
+        int classIndex = 1;
+        for (Class bestClass : classes) {
+            jScrollPane1.append("CLASS " + classIndex + ":" + "\n");
+            jScrollPane1.append("COURSE: " + schedule.getCourse(bestClass.getCourseId()).getCourseName() + "\n");
+            jScrollPane1.append("ROOM: " + schedule.getRoom(bestClass.getRoomId()).getRoomNumber() + "\n");
+            jScrollPane1.append("PROFESSOR: " + schedule.getProfessor(bestClass.getProfessorId()).getProfessorName() + "\n");
+            jScrollPane1.append("TIMESLOT: " + schedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot() + "\n");
+            jScrollPane1.append("*****************************************************************" + "\n");
+            classIndex++;
+        }
+        //PrintClassAll(schedule);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
@@ -307,6 +321,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextPane jScrollPane1;
+    private javax.swing.JTextArea jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
