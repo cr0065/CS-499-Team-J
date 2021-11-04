@@ -96,40 +96,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
     }
 
 
-
-    public static List<Class> getClasses(Schedule schedule, String type, int id) {
-        switch (type) {
-            case "ROOM":
-                return schedule.getRoomMap().get(id);
-            case "PROF":
-                return schedule.getProfMap().get(id);
-            case "MODULE":
-                return schedule.getCourseMap().get(id);
-            default:
-                return null;
-        }
-    }
-
-
-
-    public static void PrintClasses(Schedule schedule, String type, int id){
-        List<Class> classes = getClasses(schedule, type, id);
-        for (Class bestClass: classes){
-            printClass(schedule, bestClass);
-        }
-    }
-
-
-    public static void printClass(Schedule schedule, Class bestClass) {
-        System.out.println("COURSE: " + schedule.getCourse(bestClass.getCourseId()).getCourseName());
-        //jScrollPane1.append("COURSE: " + schedule.getCourse(bestClass.getCourseId()).getCourseName());
-        System.out.println("CLASSROOM: " + schedule.getRoom(bestClass.getRoomId()).getRoomNumber());
-        System.out.println("PROFESSOR: " + schedule.getProfessor(bestClass.getProfessorId()).getProfessorName());
-        System.out.println("TIMESLOT: " + schedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot());
-        System.out.println("*********************************************************************");
-    }
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -145,7 +111,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -271,31 +237,15 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
 
         GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.9, 2, 5);
-
-
         Population population = ga.initializingPopulation(schedule);
-
-
         ga.calcPopulation(population, schedule);
-
-
         int generation = 1;
 
-
-
         while (ga.isTerminating(generation, 100) == false && ga.isTerminating(population) == false) {
-
             System.out.println("Generation No." + generation);
-
-
             population = ga.crossoverPopulation(population);
-
-
             population = ga.mutatingPopulation(population, schedule);
-
-
             ga.calcPopulation(population, schedule);
-
             generation++;
         }
 
@@ -350,6 +300,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
