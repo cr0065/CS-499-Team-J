@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -255,6 +256,12 @@ public class AddDataToJTable extends javax.swing.JFrame {
         System.out.println("Solution found in " + generation + " generations");
         System.out.println("Clashes: " + schedule.calcClashes(100));
 
+        if(population.getFittest(0).getFitness()<=0){
+            showMessageDialog(null, "No Suitable Schedule Generated", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            showMessageDialog(null, "Schedule Generation Successful", "Notification", JOptionPane.INFORMATION_MESSAGE);
+        }
         PrintClassAll(schedule);
     }//GEN-LAST:event_jButton5ActionPerformed
 
