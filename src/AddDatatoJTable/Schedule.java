@@ -1,3 +1,8 @@
+/*
+    This class is responsible for knowing all the data for the scheduling algorithm
+    It also reads evaluate fitness
+ */
+
 package AddDatatoJTable;
 
 import java.util.ArrayList;
@@ -120,7 +125,8 @@ public class Schedule {
     }
 
 
-
+    // accepts individual, checks course and student groups and creates an object out of them.
+    // it then assigns the rest of the information to them
     public void createClasses(Individual individual) {
 
         Class classes[] = new Class[this.getNumClasses()];
@@ -257,11 +263,12 @@ public class Schedule {
     }
 
 
-
+    // checks to see if any constraints are violated and keeps track of it
     public int calcClashes(int size) {
 
         int clashes = 100;
         for (Class classA : this.classes) {
+
             //  room capacity
             int roomCapacity = this.getRoom(classA.getRoomId()).getRoomCapacity();
             int groupSize = this.getGroup(classA.getGroupId()).getGroupSize();
@@ -284,6 +291,7 @@ public class Schedule {
                     break;
                 }
             }
+
             //professor preferred room check
             for (Class classB : this.classes) {
                 int tmp_Prof= classB.getProfessorId();
@@ -292,6 +300,7 @@ public class Schedule {
                     clashes++;
                 }
             }
+
             // professor preferred time
             for (Class classB : this.classes) {
                 int tmp_Prof= classB.getProfessorId();

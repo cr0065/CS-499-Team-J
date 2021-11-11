@@ -9,7 +9,6 @@ public class Individual {
     //individual chromosome
 
     public Individual(int[] chromosome) {
-
         this.chromosome = chromosome;
     }
 
@@ -19,11 +18,9 @@ public class Individual {
 
         int[] individual;
         individual = new int[chromosomeLength];
-
         for (int gene = 0; gene < chromosomeLength; gene++) {
             individual[gene] = gene;
         }
-
         this.chromosome = individual;
     }
 
