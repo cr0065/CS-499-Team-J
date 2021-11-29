@@ -5,11 +5,15 @@
  */
 package AddDatatoJTable;
 
+import javax.lang.model.type.NullType;
 import javax.swing.*;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
+import java.io.BufferedReader;  
+import java.io.FileReader; 
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
@@ -21,6 +25,9 @@ public class AddDataToJTable extends javax.swing.JFrame {
     /**
      * Creates new form AddDataToJTable
      */
+    public Scanner input;
+    private Schedule ParsedSchedule = null;
+    private File file = null;
     public AddDataToJTable() {
         initComponents();
     }
@@ -216,16 +223,24 @@ public class AddDataToJTable extends javax.swing.JFrame {
             //In response to a button click:
             int returnVal = fc.showOpenDialog(AddDataToJTable.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
+                file = fc.getSelectedFile();
                 //This is where a real application would open the file.
                 System.out.println("Opening: " + file.getName());
-                Scanner input;
+                System.out.println("Opening: " + file.getAbsolutePath());
+                //Scanner input;
             }
         }
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        //BufferedReader infile = new BufferedReader(new FileReader());
+        Parser parser = new Parser();
+        ParsedSchedule = new Schedule();
+        ParsedSchedule = parser.ParseInput(file);
+        if(ParsedSchedule==null){
+            showMessageDialog(null, "No File Selected, Aborting Import", "Error", JOptionPane.WARNING_MESSAGE);
+        }
         System.out.println("Hello World");
     }
 
@@ -241,7 +256,13 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        Schedule schedule = initializeSchedule();
+        if(ParsedSchedule==null){
+            showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        ParsedSchedule = initializeSchedule();
+        Schedule schedule = ParsedSchedule;
 
 
         GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.9, 2, 5);
