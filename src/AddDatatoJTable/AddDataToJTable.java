@@ -250,7 +250,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
             //In response to a button click:
             int returnVal = fc.showSaveDialog(null); //AddDataToJTable.this
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                String content  =  jScrollPane1.getText();
+                String content  =  jTextArea1.getText();
                 outFile = fc.getSelectedFile();
                 try {
                     FileWriter fw = new FileWriter(fc.getSelectedFile());
