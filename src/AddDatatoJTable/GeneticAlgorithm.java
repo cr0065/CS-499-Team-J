@@ -7,7 +7,7 @@ public class GeneticAlgorithm {
 
 
     //declaring variables
-    private int popSize;
+    private int populationSize;
     private double rateOfMutation;
     private double rateOfCrossover;
     private int count;
@@ -16,8 +16,8 @@ public class GeneticAlgorithm {
 
 
    //initializing variables
-    public GeneticAlgorithm(int popSize, double rateOfMutation, double rateOfCrossover, int count, int tournamentSize) {
-        this.popSize = popSize;
+    public GeneticAlgorithm(int populationSize, double rateOfMutation, double rateOfCrossover, int count, int tournSize) {
+        this.populationSize = populationSize;
         this.rateOfMutation = rateOfMutation;
         this.rateOfCrossover = rateOfCrossover;
         this.count = count;
@@ -29,7 +29,9 @@ public class GeneticAlgorithm {
 
         Schedule threadSchedule = new Schedule(schedule);
         threadSchedule.createClasses(individual);
-        int clashes = threadSchedule.calcClashes(popSize);
+
+
+        int clashes = threadSchedule.calcClashes(populationSize);
         double fitness = (double) (clashes)/100;
         individual.setFitness(fitness);
         return fitness;
@@ -85,7 +87,8 @@ public class GeneticAlgorithm {
     // creates an entity to have information copied to and be used for further best fit
     public Population mutatingPopulation(Population population, Schedule schedule) {
 
-        Population newPopulation = new Population(this.popSize);
+        Population newPopulation = new Population(this.populationSize);
+
         double bestFitness = population.getFittest(0).getFitness();
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
             Individual individual = population.getFittest(populationIndex);
@@ -116,7 +119,7 @@ public class GeneticAlgorithm {
 
     public Population initializingPopulation(Schedule schedule) {
 
-        Population population = new Population(this.popSize, schedule);
+        Population population = new Population(this.populationSize, schedule);
         return population;
     }
 

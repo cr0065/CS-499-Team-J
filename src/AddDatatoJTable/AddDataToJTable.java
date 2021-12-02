@@ -10,6 +10,9 @@ import static javax.swing.JOptionPane.showMessageDialog;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import javax.swing.*;
+import java.io.*;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
@@ -81,7 +84,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         schedule.addCourse(8, "CS121", "Intro to JAVA", new int[] {1, 2, 3 ,4, 5, 6, 7});
 
         // Assigns student group information
-        schedule.addGroup(1, 20, new int[] { 1, 3, 4, 8});
+        schedule.addGroup(1, 25, new int[] { 1, 3, 4, 8});
         schedule.addGroup(2, 30, new int[] { 2, 3, 5, 6, 8 });
         schedule.addGroup(3, 18, new int[] { 3, 4, 5 });
         schedule.addGroup(4, 25, new int[] { 1, 4 ,7});
@@ -89,22 +92,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
         // Returns the created schedule
         return schedule;
     }
-
-
-    public static void PrintClassAll(Schedule schedule){
-        Class classes[] = schedule.getClasses();
-        int classIndex = 1;
-        for (Class bestClass : classes) {
-            System.out.println("CLASS " + classIndex + ":");
-            System.out.println("COURSE: " + schedule.getCourse(bestClass.getCourseId()).getCourseName());
-            System.out.println("ROOM: " + schedule.getRoom(bestClass.getRoomId()).getRoomNumber());
-            System.out.println("PROFESSOR: " + schedule.getProfessor(bestClass.getProfessorId()).getProfessorName());
-            System.out.println("TIMESLOT: " + schedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot());
-            System.out.println("*****************************************************************");
-            classIndex++;
-        }
-    }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -115,16 +102,15 @@ public class AddDataToJTable extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JTextArea();
-        JScrollPane scroll2 = new JScrollPane (jScrollPane2);
-        jScrollPane1 = new javax.swing.JTextArea();
-        JScrollPane scroll = new JScrollPane (jScrollPane1);
+        jButton6 = new javax.swing.JButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +120,10 @@ public class AddDataToJTable extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         jButton2.setText("Import (Excel)");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -163,56 +153,54 @@ public class AddDataToJTable extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(scroll2))
-                                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(scroll2, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-                                .addContainerGap())
-        );
+        jButton6.setText("Generate Report");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 685, Short.MAX_VALUE)
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(scroll)
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jScrollPane1)
+                                                .addContainerGap())
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(102, 102, 102))))
         );
 
         pack();
@@ -244,13 +232,13 @@ public class AddDataToJTable extends javax.swing.JFrame {
             showMessageDialog(null, "No File Selected, Aborting Import", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            
+
             Parser parser = new Parser();
             ParsedSchedule = new Schedule();
             ParsedSchedule = parser.ParseInput(file);
             System.out.println(file.getName()+" Imported");
         }
-           
+
     }
     //Export button
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,7 +261,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, e2.getMessage());
                 }
                  System.out.println("Save as file: " + outFile.getAbsolutePath());
-           
+
             }
         }
 
@@ -282,7 +270,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        jScrollPane1.setText("");
+        jTextArea1.setText("");
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,6 +294,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
             population = ga.crossoverPopulation(population);
             population = ga.mutatingPopulation(population, schedule);
             ga.calcPopulation(population, schedule);
+
             generation++;
         }
 
@@ -315,8 +304,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
         System.out.println("Solution found in " + generation + " generations");
         System.out.println("Clashes: " + schedule.calcClashes(100));
 
-        if(population.getFittest(0).getFitness()<=0){
-            showMessageDialog(null, "No Suitable Schedule Generated", "Error", JOptionPane.WARNING_MESSAGE);
+        if(population.getFittest(0).getFitness() <= 0){
+            showMessageDialog(null, schedule.PrintClashes(), "Error", JOptionPane.WARNING_MESSAGE);
         }
         else{
             showMessageDialog(null, "Schedule Generation Successful", "Notification", JOptionPane.INFORMATION_MESSAGE);
@@ -324,17 +313,22 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
         globalSchedule=schedule;
         Class classes[] = schedule.getClasses();
+        jTextArea1.append("CLASS: " + "COURSE: " + "ROOM: " + "PROFESSOR: " + "TIMESLOT: " +"\n");
         int classIndex = 1;
         for (Class bestClass : classes) {
-            jScrollPane1.append("CLASS " + classIndex + ":" + "\n");
-            jScrollPane1.append("COURSE: " + schedule.getCourse(bestClass.getCourseId()).getCourseName() + "\n");
-            jScrollPane1.append("ROOM: " + schedule.getRoom(bestClass.getRoomId()).getRoomNumber() + "\n");
-            jScrollPane1.append("PROFESSOR: " + schedule.getProfessor(bestClass.getProfessorId()).getProfessorName() + "\n");
-            jScrollPane1.append("TIMESLOT: " + schedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot() + "\n");
-            jScrollPane1.append("*****************************************************************" + "\n");
+            jTextArea1.append(classIndex + ": ");
+            jTextArea1.append(schedule.getCourse(bestClass.getCourseId()).getCourseName() + ", ");
+            jTextArea1.append(schedule.getRoom(bestClass.getRoomId()).getRoomNumber() + ", ");
+            jTextArea1.append(schedule.getProfessor(bestClass.getProfessorId()).getProfessorName() + ", ");
+            jTextArea1.append(schedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot() + "\n");
             classIndex++;
         }
         //PrintClassAll(schedule);
+    }
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        jTextArea1.setText("");
     }
 
     /**
@@ -378,8 +372,11 @@ public class AddDataToJTable extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextArea jScrollPane1;
-    private javax.swing.JTextArea jScrollPane2;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration
+    int counter = 0;
+    boolean RunClicked = false;
 }
