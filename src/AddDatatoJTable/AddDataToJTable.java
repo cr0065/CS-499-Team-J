@@ -5,16 +5,17 @@
  */
 package AddDatatoJTable;
 
-import javax.lang.model.type.NullType;
-import javax.swing.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.PrintStream;
-import java.util.List;
-import java.util.Scanner;
-import java.io.BufferedReader;  
-import java.io.FileReader; 
 import static javax.swing.JOptionPane.showMessageDialog;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -25,8 +26,9 @@ public class AddDataToJTable extends javax.swing.JFrame {
     /**
      * Creates new form AddDataToJTable
      */
-    public Scanner input;
+    private Scanner input;
     private Schedule ParsedSchedule = null;
+    private Schedule globalSchedule = new Schedule();
     private File file = null;
     public AddDataToJTable() {
         initComponents();
@@ -220,6 +222,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getSource() == jButton1) {
             final JFileChooser fc = new JFileChooser();
+            FileNameExtensionFilter csvFilter = new FileNameExtensionFilter("CSV Files", "csv");
+            fc.setFileFilter(csvFilter);
             //In response to a button click:
             int returnVal = fc.showOpenDialog(AddDataToJTable.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -235,18 +239,45 @@ public class AddDataToJTable extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //BufferedReader infile = new BufferedReader(new FileReader());
-        Parser parser = new Parser();
-        ParsedSchedule = new Schedule();
-        ParsedSchedule = parser.ParseInput(file);
-        if(ParsedSchedule==null){
+
+        if(file==null){
             showMessageDialog(null, "No File Selected, Aborting Import", "Error", JOptionPane.WARNING_MESSAGE);
         }
-        System.out.println("Hello World");
+        else{
+            
+            Parser parser = new Parser();
+            ParsedSchedule = new Schedule();
+            ParsedSchedule = parser.ParseInput(file);
+            System.out.println(file.getName()+" Imported");
+        }
+           
     }
-
+    //Export button
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("Hello World");
+        File outFile;
+        if (evt.getSource() == jButton3) {
+            final JFileChooser fc = new JFileChooser(new File("c:\\"));
+            fc.setFileFilter(new FileNameExtensionFilter(".docx", "Word Document"));
+            //In response to a button click:
+            int returnVal = fc.showSaveDialog(null); //AddDataToJTable.this
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                String content  =  jScrollPane1.getText();
+                outFile = fc.getSelectedFile();
+                try {
+                    FileWriter fw = new FileWriter(fc.getSelectedFile());
+                    fw.write(content);
+                    fw.flush();
+                    fw.close();
+                } catch (Exception e2) {
+                    JOptionPane.showMessageDialog(null, e2.getMessage());
+                }
+                 System.out.println("Save as file: " + outFile.getAbsolutePath());
+           
+            }
+        }
+
+        System.out.println("File Exported");
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,6 +322,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
             showMessageDialog(null, "Schedule Generation Successful", "Notification", JOptionPane.INFORMATION_MESSAGE);
         }
 
+        globalSchedule=schedule;
         Class classes[] = schedule.getClasses();
         int classIndex = 1;
         for (Class bestClass : classes) {
