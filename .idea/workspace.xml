@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Small">
+    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Merged in Cameron's Branch wonderland">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Input.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Cameron's_Freak_Branch" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638412620650</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Merged in Cameron's Branch wonderland">
+      <created>1638414601996</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1638414601996</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +112,7 @@
     <MESSAGE value="Cameron's Wonderland of Code" />
     <MESSAGE value="Small" />
     <MESSAGE value="Added GUI Fix." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GUI Fix." />
+    <MESSAGE value="Merged in Cameron's Branch wonderland" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged in Cameron's Branch wonderland" />
   </component>
 </project>

@@ -31,13 +31,12 @@ public class AddDataToJTable extends javax.swing.JFrame {
      */
     private Scanner input;
     private Schedule ParsedSchedule = null;
-    private Schedule globalSchedule = new Schedule();
     private File file = null;
     public AddDataToJTable() {
         initComponents();
     }
 
-    public static Schedule initializeSchedule() {
+   public static Schedule initializeSchedule() {
 
         Schedule schedule = new Schedule();
 
@@ -50,7 +49,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         schedule.addRoom(6,"N328", 50);
         schedule.addRoom(7, "N324", 50);
 
-        // Assigns information for the time slots *needs to remove the friday times and add proper times in place*
+        // Assigns information for the time slots
         schedule.addTimeslot(1, "MW 8:00 - 9:20");
         schedule.addTimeslot(2, "MW 9:40 - 11:00");
         schedule.addTimeslot(3, "MW 11:20 - 12:40");
@@ -90,6 +89,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         schedule.addGroup(4, 25, new int[] { 1, 4 ,7});
 
         // Returns the created schedule
+       System.out.println(schedule);
         return schedule;
     }
 
@@ -234,7 +234,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
         else{
 
             Parser parser = new Parser();
-            ParsedSchedule = new Schedule();
             ParsedSchedule = parser.ParseInput(file);
             System.out.println(file.getName()+" Imported");
         }
@@ -253,13 +252,13 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        if(ParsedSchedule==null){
-            showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        //if(ParsedSchedule==null){
+            //showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
+            //return;
+        //}
+        Schedule schedule = initializeSchedule();
 
-        ParsedSchedule = initializeSchedule();
-        Schedule schedule = ParsedSchedule;
+        System.out.println(schedule);
 
 
         GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.9, 2, 5);
@@ -289,7 +288,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
             showMessageDialog(null, "Schedule Generation Successful", "Notification", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        globalSchedule=schedule;
         Class classes[] = schedule.getClasses();
         jTextArea1.append("CLASS: " + "COURSE: " + "ROOM: " + "PROFESSOR: " + "TIMESLOT: " +"\n");
         int classIndex = 1;
