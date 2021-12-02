@@ -252,49 +252,48 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-
-        if(ParsedSchedule==null){
-            showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        System.out.println(ParsedSchedule.getProfessor(1));
+        Schedule schedule = initializeSchedule();
+        //if(ParsedSchedule==null){
+           // showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
+          //  return;
+        //}
 
         GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.9, 2, 5);
-        Population population = ga.initializingPopulation(ParsedSchedule);
-        ga.calcPopulation(population, ParsedSchedule);
+        Population population = ga.initializingPopulation(schedule);
+        ga.calcPopulation(population, schedule);
         int generation = 1;
 
         while (ga.isTerminating(generation, 100) == false && ga.isTerminating(population) == false) {
             System.out.println("Generation No." + generation);
             population = ga.crossoverPopulation(population);
-            population = ga.mutatingPopulation(population, ParsedSchedule);
-            ga.calcPopulation(population, ParsedSchedule);
+            population = ga.mutatingPopulation(population, schedule);
+            ga.calcPopulation(population, schedule);
 
             generation++;
         }
 
         // Print fitness
-        ParsedSchedule.createClasses(population.getFittest(0));
+        schedule.createClasses(population.getFittest(0));
         System.out.println();
         System.out.println("Solution found in " + generation + " generations");
-        System.out.println("Clashes: " + ParsedSchedule.calcClashes(100));
+        System.out.println("Clashes: " + schedule.calcClashes(100));
 
         if(population.getFittest(0).getFitness() <= 0){
-            showMessageDialog(null, ParsedSchedule.PrintClashes(), "Error", JOptionPane.WARNING_MESSAGE);
+            showMessageDialog(null, schedule.PrintClashes(), "Error", JOptionPane.WARNING_MESSAGE);
         }
         else{
             showMessageDialog(null, "Schedule Generation Successful", "Notification", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        Class classes[] = ParsedSchedule.getClasses();
+        Class classes[] = schedule.getClasses();
         jTextArea1.append("CLASS: " + "COURSE: " + "ROOM: " + "PROFESSOR: " + "TIMESLOT: " +"\n");
         int classIndex = 1;
         for (Class bestClass : classes) {
             jTextArea1.append(classIndex + ": ");
-            jTextArea1.append(ParsedSchedule.getCourse(bestClass.getCourseId()).getCourseName() + ", ");
-            jTextArea1.append(ParsedSchedule.getRoom(bestClass.getRoomId()).getRoomNumber() + ", ");
-            jTextArea1.append(ParsedSchedule.getProfessor(bestClass.getProfessorId()).getProfessorName() + ", ");
-            jTextArea1.append(ParsedSchedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot() + "\n");
+            jTextArea1.append(schedule.getCourse(bestClass.getCourseId()).getCourseName() + ", ");
+            jTextArea1.append(schedule.getRoom(bestClass.getRoomId()).getRoomNumber() + ", ");
+            jTextArea1.append(schedule.getProfessor(bestClass.getProfessorId()).getProfessorName() + ", ");
+            jTextArea1.append(schedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot() + "\n");
             classIndex++;
         }
         //PrintClassAll(schedule);
