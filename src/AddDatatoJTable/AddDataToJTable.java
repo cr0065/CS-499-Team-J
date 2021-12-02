@@ -243,29 +243,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
     //Export button
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        File outFile;
-        if (evt.getSource() == jButton3) {
-            final JFileChooser fc = new JFileChooser(new File("c:\\"));
-            fc.setFileFilter(new FileNameExtensionFilter(".docx", "Word Document"));
-            //In response to a button click:
-            int returnVal = fc.showSaveDialog(null); //AddDataToJTable.this
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                String content  =  jTextArea1.getText();
-                outFile = fc.getSelectedFile();
-                try {
-                    FileWriter fw = new FileWriter(fc.getSelectedFile());
-                    fw.write(content);
-                    fw.flush();
-                    fw.close();
-                } catch (Exception e2) {
-                    JOptionPane.showMessageDialog(null, e2.getMessage());
-                }
-                 System.out.println("Save as file: " + outFile.getAbsolutePath());
-
-            }
-        }
-
-        System.out.println("File Exported");
+        
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,7 +306,30 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        jTextArea1.setText("");
+        File outFile;
+        if (evt.getSource() == jButton6) {
+            final JFileChooser fc = new JFileChooser(new File("c:\\"));
+            fc.setFileFilter(new FileNameExtensionFilter(".docx", "Word Document"));
+            //In response to a button click:
+            int returnVal = fc.showSaveDialog(null); //AddDataToJTable.this
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                String content  =  jTextArea1.getText();
+                outFile = fc.getSelectedFile();
+                try {
+                    FileWriter fw = new FileWriter(fc.getSelectedFile());
+                    fw.write(content);
+                    fw.flush();
+                    fw.close();
+                } catch (Exception e2) {
+                    JOptionPane.showMessageDialog(null, e2.getMessage());
+                }
+                 System.out.println("Save as file: " + outFile.getAbsolutePath());
+                 System.out.println("File Exported");
+
+            }
+        }
+
+        
     }
 
     /**
