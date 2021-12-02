@@ -320,7 +320,7 @@ public class Schedule {
             //room occupied
             for (Class classB : this.classes) {
                 if (classA.getRoomId() == classB.getRoomId()&& classA.getTimeslotId() == classB.getTimeslotId()&& classA.getClassId() != classB.getClassId()) {
-                    clashes = "Room is already occupied: " + this.getRoom(classA.getRoomId());
+                    clashes = "Room is already occupied: " + this.getRoom(classA.getRoomId()).getRoomNumber();
                     break;
                 }
             }
@@ -328,7 +328,7 @@ public class Schedule {
             //professor available
             for (Class classB : this.classes) {
                 if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId() && classA.getClassId() != classB.getClassId()) {
-                    clashes = this.getProfessor(classA.getProfessorId()) + " is not available.";
+                    clashes = this.getProfessor(classA.getProfessorId()).getProfessorName() + " is not available.";
                     break;
                 }
             }
@@ -337,7 +337,8 @@ public class Schedule {
                 int tmp_Prof= classB.getProfessorId();
                 int tmp_Room=classB.getRoomId();
                 if (this.getProfessor(tmp_Prof).getPreferedroom()== tmp_Room){
-                    clashes = this.getProfessor(tmp_Prof) + "did not receive their preferred room.";
+                    clashes = this.getProfessor(classB.getProfessorId()).getProfessorName()
+                            + " did not receive their preferred room.";
                     break;
                 }
             }
@@ -346,7 +347,8 @@ public class Schedule {
                 int tmp_Prof= classB.getProfessorId();
                 int tmp_Time=classB.getTimeslotId();
                 if (this.getProfessor(tmp_Prof).getPreferedtime()== tmp_Time){
-                    clashes = this.getProfessor(tmp_Prof).getProfessorName() + " did not receive their preferred time.";
+                    clashes =  this.getProfessor(classB.getProfessorId()).getProfessorName()
+                            + " did not receive their preferred time.";
                     break;
                 }
             }

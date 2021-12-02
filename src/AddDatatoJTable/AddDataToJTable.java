@@ -6,8 +6,7 @@
 package AddDatatoJTable;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.List;
 import java.util.Scanner;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -72,7 +71,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         schedule.addCourse(8, "CS121", "Intro to JAVA", new int[] {1, 2, 3 ,4, 5, 6, 7});
 
         // Assigns student group information
-        schedule.addGroup(1, 60, new int[] { 1, 3, 4, 8});
+        schedule.addGroup(1, 25, new int[] { 1, 3, 4, 8});
         schedule.addGroup(2, 30, new int[] { 2, 3, 5, 6, 8 });
         schedule.addGroup(3, 18, new int[] { 3, 4, 5 });
         schedule.addGroup(4, 25, new int[] { 1, 4 ,7});
@@ -80,22 +79,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
         // Returns the created schedule
         return schedule;
     }
-
-
-    public static void PrintClassAll(Schedule schedule){
-        Class classes[] = schedule.getClasses();
-        int classIndex = 1;
-        for (Class bestClass : classes) {
-            System.out.println("CLASS " + classIndex + ":");
-            System.out.println("COURSE: " + schedule.getCourse(bestClass.getCourseId()).getCourseName());
-            System.out.println("ROOM: " + schedule.getRoom(bestClass.getRoomId()).getRoomNumber());
-            System.out.println("PROFESSOR: " + schedule.getProfessor(bestClass.getProfessorId()).getProfessorName());
-            System.out.println("TIMESLOT: " + schedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot());
-            System.out.println("*****************************************************************");
-            classIndex++;
-        }
-    }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -200,6 +183,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if (evt.getSource() == jButton1) {
@@ -241,7 +225,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         int generation = 1;
 
         while (ga.isTerminating(generation, 100) == false && ga.isTerminating(population) == false) {
-            System.out.println("Generation No." + generation + " " + population.getFittest(0).getFitness());
+            System.out.println("Generation No." + generation);
             population = ga.crossoverPopulation(population);
             population = ga.mutatingPopulation(population, schedule);
             ga.calcPopulation(population, schedule);
@@ -322,4 +306,5 @@ public class AddDataToJTable extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration
     int counter = 0;
+    boolean RunClicked = false;
 }
