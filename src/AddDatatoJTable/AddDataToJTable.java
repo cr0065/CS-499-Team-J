@@ -89,7 +89,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
         schedule.addGroup(4, 25, new int[] { 1, 4 ,7});
 
         // Returns the created schedule
-       System.out.println(schedule);
         return schedule;
     }
 
@@ -242,7 +241,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
     //Export button
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        
+
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,51 +251,49 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        //if(ParsedSchedule==null){
-            //showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
-            //return;
-        //}
-        Schedule schedule = initializeSchedule();
 
-        System.out.println(schedule);
+        if(ParsedSchedule==null){
+            showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
 
         GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.9, 2, 5);
-        Population population = ga.initializingPopulation(schedule);
-        ga.calcPopulation(population, schedule);
+        Population population = ga.initializingPopulation(ParsedSchedule);
+        ga.calcPopulation(population, ParsedSchedule);
         int generation = 1;
 
         while (ga.isTerminating(generation, 100) == false && ga.isTerminating(population) == false) {
             System.out.println("Generation No." + generation);
             population = ga.crossoverPopulation(population);
-            population = ga.mutatingPopulation(population, schedule);
-            ga.calcPopulation(population, schedule);
+            population = ga.mutatingPopulation(population, ParsedSchedule);
+            ga.calcPopulation(population, ParsedSchedule);
 
             generation++;
         }
 
         // Print fitness
-        schedule.createClasses(population.getFittest(0));
+        ParsedSchedule.createClasses(population.getFittest(0));
         System.out.println();
         System.out.println("Solution found in " + generation + " generations");
-        System.out.println("Clashes: " + schedule.calcClashes(100));
+        System.out.println("Clashes: " + ParsedSchedule.calcClashes(100));
 
         if(population.getFittest(0).getFitness() <= 0){
-            showMessageDialog(null, schedule.PrintClashes(), "Error", JOptionPane.WARNING_MESSAGE);
+            showMessageDialog(null, ParsedSchedule.PrintClashes(), "Error", JOptionPane.WARNING_MESSAGE);
         }
         else{
             showMessageDialog(null, "Schedule Generation Successful", "Notification", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        Class classes[] = schedule.getClasses();
+        Class classes[] = ParsedSchedule.getClasses();
         jTextArea1.append("CLASS: " + "COURSE: " + "ROOM: " + "PROFESSOR: " + "TIMESLOT: " +"\n");
         int classIndex = 1;
         for (Class bestClass : classes) {
             jTextArea1.append(classIndex + ": ");
-            jTextArea1.append(schedule.getCourse(bestClass.getCourseId()).getCourseName() + ", ");
-            jTextArea1.append(schedule.getRoom(bestClass.getRoomId()).getRoomNumber() + ", ");
-            jTextArea1.append(schedule.getProfessor(bestClass.getProfessorId()).getProfessorName() + ", ");
-            jTextArea1.append(schedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot() + "\n");
+            jTextArea1.append(ParsedSchedule.getCourse(bestClass.getCourseId()).getCourseName() + ", ");
+            jTextArea1.append(ParsedSchedule.getRoom(bestClass.getRoomId()).getRoomNumber() + ", ");
+            jTextArea1.append(ParsedSchedule.getProfessor(bestClass.getProfessorId()).getProfessorName() + ", ");
+            jTextArea1.append(ParsedSchedule.getTimeslot(bestClass.getTimeslotId()).getTimeslot() + "\n");
             classIndex++;
         }
         //PrintClassAll(schedule);
@@ -327,7 +324,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
             }
         }
 
-        
+
     }
 
     /**

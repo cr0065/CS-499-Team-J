@@ -16,7 +16,7 @@ public class GeneticAlgorithm {
 
 
    //initializing variables
-    public GeneticAlgorithm(int populationSize, double rateOfMutation, double rateOfCrossover, int count, int tournSize) {
+    public GeneticAlgorithm(int populationSize, double rateOfMutation, double rateOfCrossover, int count, int tournamentSize) {
         this.populationSize = populationSize;
         this.rateOfMutation = rateOfMutation;
         this.rateOfCrossover = rateOfCrossover;
