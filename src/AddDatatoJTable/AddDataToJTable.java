@@ -233,6 +233,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         else{
 
             Parser parser = new Parser();
+            ParsedSchedule = new Schedule();
             ParsedSchedule = parser.ParseInput(file);
             System.out.println(file.getName()+" Imported");
         }
@@ -256,7 +257,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
             showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
+        System.out.println(ParsedSchedule.getProfessor(1));
 
         GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.9, 2, 5);
         Population population = ga.initializingPopulation(ParsedSchedule);

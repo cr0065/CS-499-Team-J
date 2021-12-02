@@ -54,6 +54,7 @@ public class Parser extends JFrame {
                     System.out.println("Room ID: " + ScheduleLine[1] + " Room Name: "
                             + ScheduleLine[2] + " Cap: " + ScheduleLine[3]);
                     schedule.addRoom(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], Integer.parseInt(ScheduleLine[3]));
+                    System.out.println(schedule.getRoom(Integer.parseInt(ScheduleLine[1])));
                 }
                 else if (ScheduleLine[0].equals("Instructor")) {
                     System.out.println("Instructor ID: " + ScheduleLine[1] + " Instructor Name: "
