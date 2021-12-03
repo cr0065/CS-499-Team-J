@@ -277,7 +277,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         ParsedSchedule.createClasses(population.getFittest(0));
         System.out.println();
         System.out.println("Solution found in " + generation + " generations");
-        System.out.println("Clashes: " + ParsedSchedule.calcClashes(100));
+        System.out.println("Clashes: " + ParsedSchedule.calcClashes());
 
         if(population.getFittest(0).getFitness() <= 0){
             showMessageDialog(null, ParsedSchedule.PrintClashes(), "Error", JOptionPane.WARNING_MESSAGE);

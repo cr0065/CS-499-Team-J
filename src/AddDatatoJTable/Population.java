@@ -46,10 +46,6 @@ public class Population {
         this.populationFitness = fitness;
     }
 
-    public double getPopulationFitness() {
-        return this.populationFitness;
-    }
-
     public int size() {
         return this.population.length;
     }
@@ -62,7 +58,7 @@ public class Population {
         return population[offset];
     }
 
-    public void shuffle() {
+    public void shufflePopulation() {
         Random rnd = new Random();
         for (int i = population.length - 1; i > 0; i--) {
             int index = rnd.nextInt(i + 1);
@@ -75,7 +71,6 @@ public class Population {
     public Population(int populationSize, Schedule schedule) {
         // Initial population
         this.population = new Individual[populationSize];
-
         // Loop over population size
         for (int individualCount = 0; individualCount < populationSize; individualCount++) {
             // Create individual

@@ -1,17 +1,13 @@
 package AddDatatoJTable;
 
-public class Timeslot {
-
-
+public class TimesAvailable {
 
     //declaring variables
     private final int timeslotId;
     private final String timeslot;
 
-
-
     //initialising variables
-    public Timeslot(int timeslotId, String timeslot){
+    public TimesAvailable(int timeslotId, String timeslot){
         this.timeslotId = timeslotId;
         this.timeslot = timeslot;
     }

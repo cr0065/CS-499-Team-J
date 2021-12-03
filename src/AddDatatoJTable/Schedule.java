@@ -14,7 +14,7 @@ public class Schedule {
     private final HashMap<Integer, Professor> professors;
     private final HashMap<Integer, Course> courses;
     private final HashMap<Integer, Studentgroup> groups;
-    private final HashMap<Integer, Timeslot> timeslots;
+    private final HashMap<Integer, TimesAvailable> timeslots;
     private final HashMap<Integer, List<Class>> roomMap;
     private final HashMap<Integer, List<Class>> profMap;
     private final HashMap<Integer, List<Class>> courseMap;
@@ -45,7 +45,7 @@ public class Schedule {
         this.professors = new HashMap<Integer, Professor>();
         this.courses = new HashMap<Integer, Course>();
         this.groups = new HashMap<Integer, Studentgroup>();
-        this.timeslots = new HashMap<Integer, Timeslot>();
+        this.timeslots = new HashMap<Integer, TimesAvailable>();
 
         this.roomMap = new HashMap<>();
         this.profMap = new HashMap<>();
@@ -70,7 +70,7 @@ public class Schedule {
         return this.groups;
     }
 
-    private HashMap<Integer, Timeslot> getTimeslots() {
+    private HashMap<Integer, TimesAvailable> getTimeslots() {
         return this.timeslots;
     }
 
@@ -121,7 +121,7 @@ public class Schedule {
 
 
     public void addTimeslot(int timeslotId, String timeslot) {
-        this.timeslots.put(timeslotId, new Timeslot(timeslotId, timeslot));
+        this.timeslots.put(timeslotId, new TimesAvailable(timeslotId, timeslot));
     }
 
 
@@ -227,15 +227,15 @@ public class Schedule {
 
 
 
-    public Timeslot getTimeslot(int timeslotId) {
-        return (Timeslot) this.timeslots.get(timeslotId);
+    public TimesAvailable getTimeslot(int timeslotId) {
+        return (TimesAvailable) this.timeslots.get(timeslotId);
     }
 
 
 
-    public Timeslot getRandomTimeslot() {
+    public TimesAvailable getRandomTimeslot() {
         Object[] timeslotArray = this.timeslots.values().toArray();
-        Timeslot timeslot = (Timeslot) timeslotArray[(int)(timeslotArray.length * Math.random())];
+        TimesAvailable timeslot = (TimesAvailable) timeslotArray[(int)(timeslotArray.length * Math.random())];
         return timeslot;
 
     }
@@ -264,22 +264,22 @@ public class Schedule {
 
 
     // checks to see if any constraints are violated and keeps track of it
-    public int calcClashes(int size) {
+    public int calcClashes() {
 
-        int clashes = 100;
+        int clashes = 0;
         for (Class classA : this.classes) {
 
             //  room capacity
             int roomCapacity = this.getRoom(classA.getRoomId()).getRoomCapacity();
             int groupSize = this.getGroup(classA.getGroupId()).getGroupSize();
             if (roomCapacity < groupSize) {
-                clashes = clashes-33*size;
+                clashes++;
             }
 
             //room occupied
             for (Class classB : this.classes) {
                 if (classA.getRoomId() == classB.getRoomId()&& classA.getTimeslotId() == classB.getTimeslotId()&& classA.getClassId() != classB.getClassId()) {
-                    clashes = clashes-33*size;
+                    clashes++;
                     break;
                 }
             }
@@ -287,7 +287,7 @@ public class Schedule {
             //professor available
             for (Class classB : this.classes) {
                 if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId() && classA.getClassId() != classB.getClassId()) {
-                    clashes = clashes-33*size;
+                    clashes++;
                     break;
                 }
             }
@@ -306,7 +306,7 @@ public class Schedule {
                 int tmp_Prof= classB.getProfessorId();
                 int tmp_Time=classB.getTimeslotId();
                 if (this.getProfessor(tmp_Prof).getPreferedtime()== tmp_Time){
-                    clashes=clashes+2;
+                    clashes++;
                 }
             }
         }

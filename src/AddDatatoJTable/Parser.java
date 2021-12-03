@@ -17,8 +17,6 @@ public class Parser extends JFrame {
             return null;
         }
         int[] To_Teach = { };
-        int inc1 = 0;
-        int inc2 = 0;
         int[] small = {};
         int[] med = {};
         int[] large = {};
@@ -68,10 +66,8 @@ public class Parser extends JFrame {
                         schedule.addProfessor(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2],
                                 Integer.parseInt(ScheduleLine[3]), Integer.parseInt(ScheduleLine[4]));
                     }
+                    To_Teach[amount] = Integer.parseInt(ScheduleLine[1]);
                     amount++;
-                    for(inc1 = inc1; inc1 <= amount; inc1++) {
-                        To_Teach[inc1] = inc1;
-                    }
                 }
                 else if (ScheduleLine[0].equals("Course")) {
                     System.out.println("Course ID: " + ScheduleLine[1] + " Course Name: "
@@ -79,24 +75,16 @@ public class Parser extends JFrame {
                             + ScheduleLine[3] + " Enrolled: " + ScheduleLine[4]);
                     schedule.addCourse(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], ScheduleLine[3], To_Teach);
                     if(Integer.parseInt(ScheduleLine[4]) <= 20) {
-                        for(inc2 = inc2; inc2 <= amount2; inc2++) {
-                            small[inc2] = Integer.parseInt(ScheduleLine[1]);
-                        }
+                        small[amount2] = Integer.parseInt(ScheduleLine[1]);
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 30) {
-                        for(inc2 = inc2; inc2 <= amount2; inc2++) {
-                            med[inc2] = Integer.parseInt(ScheduleLine[1]);
-                        }
+                        med[amount2] = Integer.parseInt(ScheduleLine[1]);
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 30) {
-                        for(inc2 = inc2; inc2 <= amount2; inc2++) {
-                            large[inc2] = Integer.parseInt(ScheduleLine[1]);
-                        }
+                        large[amount2] = Integer.parseInt(ScheduleLine[1]);
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 30) {
-                        for(inc2 = inc2; inc2 <= amount2; inc2++) {
-                            xlarge[inc2] = Integer.parseInt(ScheduleLine[1]);
-                        }
+                        xlarge[amount2] = Integer.parseInt(ScheduleLine[1]);
                     }
                     amount2++;
                 }

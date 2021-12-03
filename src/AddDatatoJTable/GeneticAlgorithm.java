@@ -31,7 +31,7 @@ public class GeneticAlgorithm {
         threadSchedule.createClasses(individual);
 
 
-        int clashes = threadSchedule.calcClashes(populationSize);
+        int clashes = threadSchedule.calcClashes();
         double fitness = (double) (clashes)/100;
         individual.setFitness(fitness);
         return fitness;
@@ -49,7 +49,7 @@ public class GeneticAlgorithm {
     public Individual selectionFunction(Population population) {
 
         Population tournament = new Population(this.tournamentSize);
-        population.shuffle();
+        population.shufflePopulation();
         for (int i = 0; i < this.tournamentSize; i++) {
             Individual tournamentIndividual = population.getIndividual(i);
             tournament.setIndividual(i, tournamentIndividual);
