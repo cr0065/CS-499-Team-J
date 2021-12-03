@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Final Changes Data does not send.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/GeneticAlgorithm.java" afterDir="false" />
+    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Pushed some name and functionality changes">
       <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Population.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Timeslot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/TimesAvailable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/TimesAvailable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/TimesAvailable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638472340208</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Pushed some name and functionality changes">
+      <created>1638567301089</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1638567301089</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -131,6 +133,7 @@
     <MESSAGE value="Merged in Cameron's Branch wonderland" />
     <MESSAGE value="Import fixes" />
     <MESSAGE value="Final Changes Data does not send." />
-    <option name="LAST_COMMIT_MESSAGE" value="Final Changes Data does not send." />
+    <MESSAGE value="Pushed some name and functionality changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pushed some name and functionality changes" />
   </component>
 </project>

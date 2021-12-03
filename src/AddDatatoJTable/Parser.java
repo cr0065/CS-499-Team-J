@@ -88,24 +88,13 @@ public class Parser extends JFrame {
                     }
                     amount2++;
                 }
-                else if (ScheduleLine[0].equals("Group")) {
-                    System.out.println("Group ID: " + ScheduleLine[1] + " Max Cap: " + ScheduleLine[2]);
-                    if(Integer.parseInt(ScheduleLine[1]) == 1) {
-                        schedule.addGroup(Integer.parseInt(ScheduleLine[1]), Integer.parseInt(ScheduleLine[2]), small);
-                    }
-                    else if(Integer.parseInt(ScheduleLine[1]) == 2) {
-                        schedule.addGroup(Integer.parseInt(ScheduleLine[1]), Integer.parseInt(ScheduleLine[2]), med);
-                    }
-                    else if(Integer.parseInt(ScheduleLine[1]) == 3) {
-                        schedule.addGroup(Integer.parseInt(ScheduleLine[1]), Integer.parseInt(ScheduleLine[2]), large);
-                    }
-                    else if(Integer.parseInt(ScheduleLine[1]) == 4) {
-                        schedule.addGroup(Integer.parseInt(ScheduleLine[1]), Integer.parseInt(ScheduleLine[2]), xlarge);
-                    }
-                }
                 else {
                     file.close();
                 }
+                schedule.addGroup(1, 20, small);
+                schedule.addGroup(2, 30, med);
+                schedule.addGroup(3, 40, large);
+                schedule.addGroup(4, 50, xlarge);
             }
         }
         catch (IOException e)

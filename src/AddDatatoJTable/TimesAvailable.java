@@ -12,8 +12,6 @@ public class TimesAvailable {
         this.timeslot = timeslot;
     }
 
-
-
     public int getTimeslotId(){
         return this.timeslotId;
     }
