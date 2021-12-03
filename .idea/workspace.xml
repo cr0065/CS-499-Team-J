@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Pushed some name and functionality changes">
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/TimesAvailable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/TimesAvailable.java" afterDir="false" />
+    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Added some more changes to schedule creation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638567301089</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added some more changes to schedule creation">
+      <created>1638570433911</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1638570433911</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,6 +140,7 @@
     <MESSAGE value="Import fixes" />
     <MESSAGE value="Final Changes Data does not send." />
     <MESSAGE value="Pushed some name and functionality changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pushed some name and functionality changes" />
+    <MESSAGE value="Added some more changes to schedule creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some more changes to schedule creation" />
   </component>
 </project>
