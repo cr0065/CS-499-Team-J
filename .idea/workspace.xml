@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Added some more changes to schedule creation">
+    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Added dialog box for program is running">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Input.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638570433911</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added dialog box for program is running">
+      <created>1638572540965</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1638572540965</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -141,6 +151,7 @@
     <MESSAGE value="Final Changes Data does not send." />
     <MESSAGE value="Pushed some name and functionality changes" />
     <MESSAGE value="Added some more changes to schedule creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some more changes to schedule creation" />
+    <MESSAGE value="Added dialog box for program is running" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added dialog box for program is running" />
   </component>
 </project>

@@ -36,6 +36,100 @@ public class AddDataToJTable extends javax.swing.JFrame {
         initComponents();
     }
 
+    public Schedule ParseInput(File filepath){ //BufferedReader infile
+        if(filepath == null){
+            return null;
+        }
+        int[] To_Teach = {0};
+        int[] small = {};
+        int[] med = {};
+        int[] large = {};
+        int[] xlarge = {};
+        int amount = 0;
+        int amount2 = 0;
+        String line = "";
+        String splitBy = ",";
+        Schedule schedule = new Schedule();
+
+        // First try loop is to get the information of our data
+        try
+        {
+            //parsing a CSV file into BufferedReader class constructor
+            BufferedReader file = new BufferedReader(new FileReader(filepath.getAbsolutePath()));
+            while ((line = file.readLine()) != null)   //returns a Boolean value
+            {
+
+                String[] ScheduleLine = line.split(splitBy);    // use comma as separator
+
+                if(ScheduleLine[0].equals("Room")) {
+                    jTextArea1.append("Room ID: " + ScheduleLine[1] + " Room Name: "
+                            + ScheduleLine[2] + " Cap: " + ScheduleLine[3] + "\n");
+                }
+                else if (ScheduleLine[0].equals("Instructor")) {
+                    jTextArea1.append("Instructor ID: " + ScheduleLine[1] + " Instructor Name: "
+                            + ScheduleLine[2] + " Preferred Classroom: "
+                            + ScheduleLine[3] + " Preferred Time: " + ScheduleLine[4] + "\n");
+                    amount++;
+                    System.out.println(amount);
+                }
+                else if (ScheduleLine[0].equals("Course")) {
+                    jTextArea1.append("Course ID: " + ScheduleLine[1] + " Course Name: "
+                            + ScheduleLine[2] + " Course Full Name: "
+                            + ScheduleLine[3] + " Enrolled: " + ScheduleLine[4] + "\n");
+                    amount2++;
+                    System.out.println(amount2);
+                }
+                else {
+                    file.close();
+                }
+            }
+        }
+        catch (IOException e)
+        {
+
+        }
+
+        try
+        {
+            //parsing a CSV file into BufferedReader class constructor
+            BufferedReader file = new BufferedReader(new FileReader(filepath.getAbsolutePath()));
+            while ((line = file.readLine()) != null)   //returns a Boolean value
+            {
+
+                String[] ScheduleLine = line.split(splitBy);    // use comma as separator
+
+                if(ScheduleLine[0].equals("Room")) {
+                    jTextArea1.append("Room ID: " + ScheduleLine[1] + " Room Name: "
+                            + ScheduleLine[2] + " Cap: " + ScheduleLine[3] + "\n");
+                }
+                else if (ScheduleLine[0].equals("Instructor")) {
+                    jTextArea1.append("Instructor ID: " + ScheduleLine[1] + " Instructor Name: "
+                            + ScheduleLine[2] + " Preferred Classroom: "
+                            + ScheduleLine[3] + " Preferred Time: " + ScheduleLine[4] + "\n");
+                    amount++;
+                    System.out.println(amount);
+                }
+                else if (ScheduleLine[0].equals("Course")) {
+                    jTextArea1.append("Course ID: " + ScheduleLine[1] + " Course Name: "
+                            + ScheduleLine[2] + " Course Full Name: "
+                            + ScheduleLine[3] + " Enrolled: " + ScheduleLine[4] + "\n");
+                    amount2++;
+                    System.out.println(amount2);
+                }
+                else {
+                    file.close();
+                }
+            }
+        }
+        catch (IOException e)
+        {
+
+        }
+
+
+        return schedule;
+    }
+
    public static Schedule initializeSchedule() {
 
         Schedule schedule = new Schedule();
@@ -231,10 +325,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
             showMessageDialog(null, "No File Selected, Aborting Import", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else{
-
-            Parser parser = new Parser();
             ParsedSchedule = new Schedule();
-            ParsedSchedule = parser.ParseInput(file);
+            ParsedSchedule = ParseInput(file);
             System.out.println(file.getName()+" Imported");
         }
 
