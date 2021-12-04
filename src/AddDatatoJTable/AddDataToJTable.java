@@ -88,7 +88,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         {
 
         }
-
+        /*
         try
         {
             //parsing a CSV file into BufferedReader class constructor
@@ -126,7 +126,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
         }
 
-
+        */
         return schedule;
     }
 
