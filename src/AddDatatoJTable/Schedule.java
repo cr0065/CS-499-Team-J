@@ -264,22 +264,22 @@ public class Schedule {
 
 
     // checks to see if any constraints are violated and keeps track of it
-    public int calcClashes() {
+    public int calcClashes(int size) {
 
-        int clashes = 0;
+        int clashes = 100;
         for (Class classA : this.classes) {
 
             //  room capacity
             int roomCapacity = this.getRoom(classA.getRoomId()).getRoomCapacity();
             int groupSize = this.getGroup(classA.getGroupId()).getGroupSize();
             if (roomCapacity < groupSize) {
-                clashes++;
+                clashes = clashes-33*size;
             }
 
             //room occupied
             for (Class classB : this.classes) {
                 if (classA.getRoomId() == classB.getRoomId()&& classA.getTimeslotId() == classB.getTimeslotId()&& classA.getClassId() != classB.getClassId()) {
-                    clashes++;
+                    clashes = clashes-33*size;
                     break;
                 }
             }
@@ -287,7 +287,7 @@ public class Schedule {
             //professor available
             for (Class classB : this.classes) {
                 if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId() && classA.getClassId() != classB.getClassId()) {
-                    clashes++;
+                    clashes = clashes-33*size;
                     break;
                 }
             }
@@ -306,7 +306,7 @@ public class Schedule {
                 int tmp_Prof= classB.getProfessorId();
                 int tmp_Time=classB.getTimeslotId();
                 if (this.getProfessor(tmp_Prof).getPreferedtime()== tmp_Time){
-                    clashes++;
+                    clashes=clashes+2;
                 }
             }
         }

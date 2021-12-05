@@ -31,7 +31,7 @@ public class GeneticAlgorithm {
         threadSchedule.createClasses(individual);
 
 
-        int clashes = threadSchedule.calcClashes();
+        int clashes = threadSchedule.calcClashes(populationSize);
         double fitness = (double) (clashes)/100;
         individual.setFitness(fitness);
         return fitness;
@@ -118,7 +118,6 @@ public class GeneticAlgorithm {
     }
 
     public Population initializingPopulation(Schedule schedule) {
-
         Population population = new Population(this.populationSize, schedule);
         return population;
     }

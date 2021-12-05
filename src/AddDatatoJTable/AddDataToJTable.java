@@ -30,8 +30,9 @@ public class AddDataToJTable extends javax.swing.JFrame {
      * Creates new form AddDataToJTable
      */
     private Scanner input;
-    private Schedule ParsedSchedule = null;
+    private Schedule ParsedSchedule = new Schedule();
     private File file = null;
+
     public AddDataToJTable() {
         initComponents();
     }
@@ -40,16 +41,26 @@ public class AddDataToJTable extends javax.swing.JFrame {
         if(filepath == null){
             return null;
         }
-        int[] To_Teach = {0};
-        int[] small = {};
-        int[] med = {};
-        int[] large = {};
-        int[] xlarge = {};
         int amount = 0;
-        int amount2 = 0;
+        int amount_small = 0;
+        int amount_med = 0;
+        int amount_large = 0;
+        int amount_xlarge = 0;
         String line = "";
         String splitBy = ",";
-        Schedule schedule = new Schedule();
+
+        ParsedSchedule.addTimeslot(1, "MW 8:00 - 9:20");
+        ParsedSchedule.addTimeslot(2, "MW 9:40 - 11:00");
+        ParsedSchedule.addTimeslot(3, "MW 11:20 - 12:40");
+        ParsedSchedule.addTimeslot(4, "MW 1:00 - 2:20");
+        ParsedSchedule.addTimeslot(5, "MW 2:40 - 4:00");
+        ParsedSchedule.addTimeslot(6, "MW 4:20 - 5:40");
+        ParsedSchedule.addTimeslot(7, "TR 8:00 - 9:20");
+        ParsedSchedule.addTimeslot(8, "TR 9:40 - 11:00");
+        ParsedSchedule.addTimeslot(9, "TR 11:20 - 12:40");
+        ParsedSchedule.addTimeslot(10, "TR 1:00 - 2:20");
+        ParsedSchedule.addTimeslot(11, "TR 2:40 - 4:00");
+        ParsedSchedule.addTimeslot(12, "TR 4:20 - 5:40");
 
         // First try loop is to get the information of our data
         try
@@ -70,14 +81,23 @@ public class AddDataToJTable extends javax.swing.JFrame {
                             + ScheduleLine[2] + " Preferred Classroom: "
                             + ScheduleLine[3] + " Preferred Time: " + ScheduleLine[4] + "\n");
                     amount++;
-                    System.out.println(amount);
                 }
                 else if (ScheduleLine[0].equals("Course")) {
                     jTextArea1.append("Course ID: " + ScheduleLine[1] + " Course Name: "
                             + ScheduleLine[2] + " Course Full Name: "
                             + ScheduleLine[3] + " Enrolled: " + ScheduleLine[4] + "\n");
-                    amount2++;
-                    System.out.println(amount2);
+                    if(Integer.parseInt(ScheduleLine[4]) <= 20) {
+                        amount_small++;
+                    }
+                    else if (Integer.parseInt(ScheduleLine[4]) <= 30) {
+                        amount_med++;
+                    }
+                    else if (Integer.parseInt(ScheduleLine[4]) <= 40) {
+                        amount_large++;
+                    }
+                    else if (Integer.parseInt(ScheduleLine[4]) >= 50) {
+                        amount_xlarge++;
+                    }
                 }
                 else {
                     file.close();
@@ -88,7 +108,17 @@ public class AddDataToJTable extends javax.swing.JFrame {
         {
 
         }
-        /*
+
+        int[] To_Teach = new int[amount];
+        int[] small = new int[amount_small];
+        int[] med = new int[amount_med];
+        int[] large = new int[amount_large];
+        int[] xlarge = new int[amount_xlarge];
+        int current = 0;
+        int current_small = 0;
+        int current_med = 0;
+        int current_large = 0;
+        int current_xlarge = 0;
         try
         {
             //parsing a CSV file into BufferedReader class constructor
@@ -99,26 +129,60 @@ public class AddDataToJTable extends javax.swing.JFrame {
                 String[] ScheduleLine = line.split(splitBy);    // use comma as separator
 
                 if(ScheduleLine[0].equals("Room")) {
-                    jTextArea1.append("Room ID: " + ScheduleLine[1] + " Room Name: "
-                            + ScheduleLine[2] + " Cap: " + ScheduleLine[3] + "\n");
+                    ParsedSchedule.addRoom(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], Integer.parseInt(ScheduleLine[3]));
                 }
                 else if (ScheduleLine[0].equals("Instructor")) {
-                    jTextArea1.append("Instructor ID: " + ScheduleLine[1] + " Instructor Name: "
-                            + ScheduleLine[2] + " Preferred Classroom: "
-                            + ScheduleLine[3] + " Preferred Time: " + ScheduleLine[4] + "\n");
-                    amount++;
-                    System.out.println(amount);
+                    if(ScheduleLine[4].equals("null")) {
+                        ParsedSchedule.addProfessor(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2],
+                                Integer.parseInt(ScheduleLine[3]));
+                    }
+                    else {
+                        ParsedSchedule.addProfessor(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2],
+                                Integer.parseInt(ScheduleLine[3]), Integer.parseInt(ScheduleLine[4]));
+                    }
+                    To_Teach[current] = Integer.parseInt(ScheduleLine[1]);
+                    current++;
                 }
                 else if (ScheduleLine[0].equals("Course")) {
-                    jTextArea1.append("Course ID: " + ScheduleLine[1] + " Course Name: "
-                            + ScheduleLine[2] + " Course Full Name: "
-                            + ScheduleLine[3] + " Enrolled: " + ScheduleLine[4] + "\n");
-                    amount2++;
-                    System.out.println(amount2);
+                    ParsedSchedule.addCourse(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], ScheduleLine[3], To_Teach);
+                    if(Integer.parseInt(ScheduleLine[4]) <= 20) {
+                        small[current_small] = Integer.parseInt(ScheduleLine[1]);
+                        current_small++;
+                    }
+                    else if (Integer.parseInt(ScheduleLine[4]) <= 30) {
+                        med[current_med] = Integer.parseInt(ScheduleLine[1]);
+                        current_med++;
+                    }
+                    else if (Integer.parseInt(ScheduleLine[4]) <= 40) {
+                        large[current_large] = Integer.parseInt(ScheduleLine[1]);
+                        current_large++;
+                    }
+                    else if (Integer.parseInt(ScheduleLine[4]) >= 50) {
+                        xlarge[current_xlarge] = Integer.parseInt(ScheduleLine[1]);
+                        current_xlarge++;
+                    }
                 }
                 else {
                     file.close();
                 }
+
+                for (int i = 0; i < small.length; i++) {
+                    System.out.println("small: " + small[i]);
+                }
+                for (int j = 0; j < med.length; j++) {
+                    System.out.println("med: " + med[j]);
+                }
+                for (int k = 0; k < large.length; k++) {
+                    System.out.println("large: " + large[k]);
+                }
+                for (int l = 0; l < xlarge.length; l++) {
+                    System.out.println("xlarge: " + xlarge[l]);
+                }
+
+                ParsedSchedule.addGroup(1, 20, small);
+                ParsedSchedule.addGroup(2, 30, med);
+                ParsedSchedule.addGroup(3, 40, large);
+                ParsedSchedule.addGroup(4, 50, xlarge);
             }
         }
         catch (IOException e)
@@ -126,64 +190,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
         }
 
-        */
-        return schedule;
-    }
-
-   public static Schedule initializeSchedule() {
-
-        Schedule schedule = new Schedule();
-
-        // Assigns information for the room along with ID's
-        schedule.addRoom(1, "N327", 50);
-        schedule.addRoom(2, "N105", 50);
-        schedule.addRoom(3, "N218", 50);
-        schedule.addRoom(4, "N315", 55);
-        schedule.addRoom(5, "N308", 50);
-        schedule.addRoom(6,"N328", 50);
-        schedule.addRoom(7, "N324", 50);
-
-        // Assigns information for the time slots
-        schedule.addTimeslot(1, "MW 8:00 - 9:20");
-        schedule.addTimeslot(2, "MW 9:40 - 11:00");
-        schedule.addTimeslot(3, "MW 11:20 - 12:40");
-        schedule.addTimeslot(4, "MW 1:00 - 2:20");
-        schedule.addTimeslot(5, "MW 2:40 - 4:00");
-        schedule.addTimeslot(6, "MW 4:20 - 5:40");
-        schedule.addTimeslot(7, "TR 8:00 - 9:20");
-        schedule.addTimeslot(8, "TR 9:40 - 11:00");
-        schedule.addTimeslot(9, "TR 11:20 - 12:40");
-        schedule.addTimeslot(10, "TR 1:00 - 2:20");
-        schedule.addTimeslot(11, "TR 2:40 - 4:00");
-        schedule.addTimeslot(12, "TR 4:20 - 5:40");
-
-        // Assigns information for the professors along with preferred room and preferred time
-        schedule.addProfessor(1, "Hardin Danny", 2,8);
-        schedule.addProfessor(2, "Williamson James",2);
-        schedule.addProfessor(3, "Rochowiak Daniel",3);
-        schedule.addProfessor(4, "Poole Jeffrey",1);
-        schedule.addProfessor(5, "Allen Mary", 5, 6);
-        schedule.addProfessor(6, "Rochowiak Daniel", 1, 10);
-        schedule.addProfessor(7, "Newman Timothy",4);
-
-        // Assigns information to the course the third field is assigning which professors can teach those classes
-        schedule.addCourse(1, "CS326", "Algorithm", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(2, "CS421", "Database", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(3, "CS400", "Cloud Computing", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(4, "CS218", "Web Development", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(5, "CS310", "Application Engineering", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(6, "CS421", "Data Science", new int[] { 1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(7, "CS303", "Business Intelligence", new int[]{1, 2, 3 ,4, 5, 6, 7});
-        schedule.addCourse(8, "CS121", "Intro to JAVA", new int[] {1, 2, 3 ,4, 5, 6, 7});
-
-        // Assigns student group information
-        schedule.addGroup(1, 25, new int[] { 1, 3, 4, 8});
-        schedule.addGroup(2, 30, new int[] { 2, 3, 5, 6, 8 });
-        schedule.addGroup(3, 18, new int[] { 3, 4, 5 });
-        schedule.addGroup(4, 25, new int[] { 1, 4 ,7});
-
-        // Returns the created schedule
-        return schedule;
+        return ParsedSchedule;
     }
 
     /**
@@ -325,7 +332,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
             showMessageDialog(null, "No File Selected, Aborting Import", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            ParsedSchedule = new Schedule();
             ParsedSchedule = ParseInput(file);
             System.out.println(file.getName()+" Imported");
         }
@@ -367,12 +373,14 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        jTextArea1.setText("");
         showMessageDialog(null, "Program is running give \n approx. 60 - 180s for run time",
                 "Notification", JOptionPane.INFORMATION_MESSAGE);
         if(ParsedSchedule==null){
             showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        System.out.println(ParsedSchedule.getCourse(1));
         System.out.println(ParsedSchedule.getProfessor(1));
 
         GeneticAlgorithm ga = new GeneticAlgorithm(1000, 0.01, 0.9, 2, 5);
@@ -382,6 +390,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
         while (ga.isTerminating(generation, 100) == false && ga.isTerminating(population) == false) {
             System.out.println("Generation No." + generation);
+
             population = ga.crossoverPopulation(population);
             population = ga.mutatingPopulation(population, ParsedSchedule);
             ga.calcPopulation(population, ParsedSchedule);
@@ -391,9 +400,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
         // Print fitness
         ParsedSchedule.createClasses(population.getFittest(0));
-        System.out.println();
         System.out.println("Solution found in " + generation + " generations");
-        System.out.println("Clashes: " + ParsedSchedule.calcClashes());
+        System.out.println("Clashes: " + ParsedSchedule.calcClashes(100));
 
         if(population.getFittest(0).getFitness() <= 0){
             showMessageDialog(null, ParsedSchedule.PrintClashes(), "Error", JOptionPane.WARNING_MESSAGE);

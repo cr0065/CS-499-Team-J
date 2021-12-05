@@ -35,7 +35,6 @@ public class Individual {
         for (Studentgroup group : schedule.getGroupsAsArray()) {
 
             for (int courseId : group.getCourseIds()) {
-
                 int timeslotId = schedule.getRandomTimeslot().getTimeslotId();
                 newChromosome[chromosomeIndex] = timeslotId;
                 chromosomeIndex++;
@@ -46,6 +45,8 @@ public class Individual {
                 chromosomeIndex++;
 
                 Course course = schedule.getCourse(courseId);
+                //System.out.println("Course ID: " + courseId);
+                //System.out.println("Schedule.getCourse: " + schedule.getCourse(courseId));
                 newChromosome[chromosomeIndex] = course.getRandomProfessorId();
                 chromosomeIndex++;
 
