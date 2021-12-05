@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Commented out the second try loop">
+    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="I have done it... it breathes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Input.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Schedule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input.csv" afterDir="false" />
     </list>
@@ -143,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638662211327</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="I have done it... it breathes">
+      <created>1638669942927</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1638669942927</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,7 +175,8 @@
     <MESSAGE value="Added dialog box for program is running" />
     <MESSAGE value="Some nonsense." />
     <MESSAGE value="Commented out the second try loop" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commented out the second try loop" />
+    <MESSAGE value="I have done it... it breathes" />
+    <option name="LAST_COMMIT_MESSAGE" value="I have done it... it breathes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

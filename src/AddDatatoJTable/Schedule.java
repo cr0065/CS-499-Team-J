@@ -321,15 +321,16 @@ public class Schedule {
             int roomCapacity = this.getRoom(classA.getRoomId()).getRoomCapacity();
             int groupSize = this.getGroup(classA.getGroupId()).getGroupSize();
             if (roomCapacity < groupSize) {
-                clashes = "Room Capacity is smaller than Class Size: " + this.getRoom(classA.getRoomId()).getRoomNumber() +
-                        " " + roomCapacity + ": " + " " + groupSize;
+                clashes = "There is no class big enough for the amount of students \n" +
+                        "please find a larger room available.";
                 break;
             }
 
             //room occupied
             for (Class classB : this.classes) {
                 if (classA.getRoomId() == classB.getRoomId()&& classA.getTimeslotId() == classB.getTimeslotId()&& classA.getClassId() != classB.getClassId()) {
-                    clashes = "Room is already occupied: " + this.getRoom(classA.getRoomId()).getRoomNumber();
+                    clashes = "Room is already occupied: " + this.getRoom(classA.getRoomId()).getRoomNumber() + "\n" +
+                            "Please try to get more available rooms to teach in.";
                     break;
                 }
             }
@@ -337,7 +338,8 @@ public class Schedule {
             //professor available
             for (Class classB : this.classes) {
                 if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId() && classA.getClassId() != classB.getClassId()) {
-                    clashes = this.getProfessor(classA.getProfessorId()).getProfessorName() + " is not available.";
+                    clashes = this.getProfessor(classA.getProfessorId()).getProfessorName() + " is not available to teach \n" +
+                            "add more professors or lighten the load to teach.";
                     break;
                 }
             }
