@@ -369,7 +369,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
                 String path = fd.getDirectory() + fd.getFile();
 
                 FileOutputStream fos = new FileOutputStream(path);
-                System.out.println(s);
                 byte[] b = s.getBytes();
                 fos.write(b);
                 fos.close();
@@ -453,7 +452,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
                 String path = fd.getDirectory() + fd.getFile();
 
                 FileOutputStream fos = new FileOutputStream(path);
-                System.out.println(s);
                 byte[] b = s.getBytes();
                 fos.write(b);
                 fos.close();
