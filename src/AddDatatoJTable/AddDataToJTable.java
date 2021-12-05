@@ -7,6 +7,7 @@ package AddDatatoJTable;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -358,27 +359,24 @@ public class AddDataToJTable extends javax.swing.JFrame {
     //Export button
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        File outFile;
-        if (evt.getSource() == jButton6) {
-            final JFileChooser fc = new JFileChooser(new File("c:\\"));
-            fc.setFileFilter(new FileNameExtensionFilter(".csv", "Excel Document"));
-            //In response to a button click:
-            int returnVal = fc.showSaveDialog(null); //AddDataToJTable.this
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                String content  =  jTextArea1.getText();
-                outFile = fc.getSelectedFile();
-                try {
-                    FileWriter fw = new FileWriter(fc.getSelectedFile());
-                    fw.write(content);
-                    fw.flush();
-                    fw.close();
-                } catch (Exception e2) {
-                    JOptionPane.showMessageDialog(null, e2.getMessage());
-                }
-                System.out.println("Save as file: " + outFile.getAbsolutePath());
-                System.out.println("File Exported");
+        try {
+            String s = jTextArea1.getText();
+            if (s.length() > 0) {
+                FileDialog fd = new FileDialog(this, "Save File As", FileDialog.SAVE);
+                fd.setFile("temp.csv");
+                fd.setDirectory("c:\\windows\\temp");
+                fd.setVisible(true);
+                String path = fd.getDirectory() + fd.getFile();
 
+                FileOutputStream fos = new FileOutputStream(path);
+                System.out.println(s);
+                byte[] b = s.getBytes();
+                fos.write(b);
+                fos.close();
             }
+        }
+        catch (Exception e){
+
         }
 
 
