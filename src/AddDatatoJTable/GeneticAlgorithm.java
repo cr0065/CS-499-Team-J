@@ -4,8 +4,6 @@ import java.util.stream.IntStream;
 
 public class GeneticAlgorithm {
 
-
-
     //declaring variables
     private int populationSize;
     private double rateOfMutation;
@@ -99,8 +97,7 @@ public class GeneticAlgorithm {
                         getFitness();
                 double fitnessDelta2 = bestFitness - population.
                         getAvgFitness();
-                adaptiveMutationRate = (fitnessDelta1 / fitnessDelta2) *
-                        this.rateOfMutation;
+                adaptiveMutationRate = (fitnessDelta1 / fitnessDelta2) * this.rateOfMutation;
             }
             for (int geneIndex = 0; geneIndex < individual.getChromosomeLength(); geneIndex++) {
 

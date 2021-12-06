@@ -14,11 +14,11 @@ public class Population {
         this.population = new Individual[populationSize];
     }
 
-    public Population(int populationSize, int chromosomeLength) {
+    public Population(int populationSize, int Length) {
         this.population = new Individual[populationSize];
 
         for (int individualCount = 0; individualCount < populationSize; individualCount++) {
-            Individual individual = new Individual(chromosomeLength);
+            Individual individual = new Individual(Length);
             this.population[individualCount] = individual;
         }
     }
@@ -30,10 +30,10 @@ public class Population {
     public Individual getFittest(int offset) {
         Arrays.sort(this.population, new Comparator<Individual>() {
             @Override
-            public int compare(Individual o1, Individual o2) {
-                if (o1.getFitness() > o2.getFitness()) {
+            public int compare(Individual number1, Individual number2) {
+                if (number1.getFitness() > number2.getFitness()) {
                     return -1;
-                } else if (o1.getFitness() < o2.getFitness()) {
+                } else if (number1.getFitness() < number2.getFitness()) {
                     return 1;
                 }
                 return 0;
@@ -62,9 +62,9 @@ public class Population {
         Random rnd = new Random();
         for (int i = population.length - 1; i > 0; i--) {
             int index = rnd.nextInt(i + 1);
-            Individual a = population[index];
+            Individual atindex = population[index];
             population[index] = population[i];
-            population[i] = a;
+            population[i] = atindex;
         }
     }
 
@@ -81,6 +81,7 @@ public class Population {
     }
 
     public double getAvgFitness(){
+        // function to get the average fitness
         if (this.populationFitness == -1) {
             double totalFitness = 0;
             for (Individual individual : population) {

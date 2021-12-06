@@ -7,13 +7,11 @@ public class Individual {
     private double fitness = -1;
 
     //individual chromosome
-
     public Individual(int[] chromosome) {
         this.chromosome = chromosome;
     }
 
     //random individual
-
     public Individual(int chromosomeLength) {
 
         int[] individual;
@@ -49,12 +47,8 @@ public class Individual {
                 //System.out.println("Schedule.getCourse: " + schedule.getCourse(courseId));
                 newChromosome[chromosomeIndex] = course.getRandomProfessorId();
                 chromosomeIndex++;
-
-
-
             }
         }
-
         this.chromosome = newChromosome;
     }
 

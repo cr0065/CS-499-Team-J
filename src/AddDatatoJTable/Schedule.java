@@ -140,41 +140,26 @@ public class Schedule {
             for (int courseId : courseIds) {
 
                 Class newClass = new Class(classIndex, group.getGroupId(), courseId);
-
-
                 newClass.setTimeslot(chromosome[chromosomePos]);
                 chromosomePos++;
-
-
                 newClass.setRoomId(chromosome[chromosomePos]);
                 chromosomePos++;
-
-
                 newClass.setProfessor(chromosome[chromosomePos]);
                 chromosomePos++;
-
-
                 this.roomMap.putIfAbsent(newClass.getRoomId(), new ArrayList<>());
                 this.groupMap.putIfAbsent(newClass.getGroupId(), new ArrayList<>());
                 this.courseMap.putIfAbsent(newClass.getCourseId(), new ArrayList<>());
                 this.profMap.putIfAbsent(newClass.getProfessorId(), new ArrayList<>());
-
                 this.roomMap.get(newClass.getRoomId()).add(newClass);
                 this.groupMap.get(newClass.getGroupId()).add(newClass);
                 this.courseMap.get(newClass.getCourseId()).add(newClass);
                 this.profMap.get(newClass.getProfessorId()).add(newClass);
-
                 classes[classIndex] = newClass;
-
                 classIndex++;
-
             }
         }
-
         this.classes = classes;
     }
-
-
 
     public Classroom getRoom(int roomId) {
         if (!this.rooms.containsKey(roomId)) {
@@ -187,51 +172,37 @@ public class Schedule {
         return this.rooms;
     }
 
-
-
     public Classroom getRandomRoom() {
         Object[] roomsArray = this.rooms.values().toArray();
         Classroom room = (Classroom) roomsArray[(int) (roomsArray.length * Math.random())];
         return room;
     }
 
-
-
     public Professor getProfessor(int professorId) {
         return (Professor) this.professors.get(professorId);
     }
 
-
-
     public Course getCourse(int courseId) {
         return (Course) this.courses.get(courseId);
     }
-
-
 
     public int[] getGroupCourses(int groupId) {
         Studentgroup group = (Studentgroup) this.groups.get(groupId);
         return group.getCourseIds();
     }
 
-
     public Studentgroup getGroup(int groupId) {
         return (Studentgroup) this.groups.get(groupId);
     }
-
 
 
     public Studentgroup[] getGroupsAsArray() {
         return (Studentgroup[]) this.groups.values().toArray(new Studentgroup[this.groups.size()]);
     }
 
-
-
     public TimesAvailable getTimeslot(int timeslotId) {
         return (TimesAvailable) this.timeslots.get(timeslotId);
     }
-
-
 
     public TimesAvailable getRandomTimeslot() {
         Object[] timeslotArray = this.timeslots.values().toArray();
@@ -240,13 +211,9 @@ public class Schedule {
 
     }
 
-
-
     public Class[] getClasses() {
         return this.classes;
     }
-
-
 
     public int getNumClasses() {
         if (this.numClasses > 0) {
@@ -261,7 +228,6 @@ public class Schedule {
 
         return this.numClasses;
     }
-
 
     // checks to see if any constraints are violated and keeps track of it
     public int calcClashes(int size) {
