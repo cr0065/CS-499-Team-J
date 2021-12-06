@@ -366,8 +366,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
             String s = jTextArea1.getText();
             if (s.length() > 0) {
                 FileDialog fd = new FileDialog(this, "Save File As", FileDialog.SAVE);
-                fd.setFile(".csv");
-                fd.setDirectory("c:\\windows\\temp");
+                fd.setFile("new_report.csv");
+                fd.setDirectory("c:\\windows\\temp.csv");
                 fd.setVisible(true);
                 String path = fd.getDirectory() + fd.getFile();
 
