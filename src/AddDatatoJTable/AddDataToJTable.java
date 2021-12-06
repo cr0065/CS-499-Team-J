@@ -447,7 +447,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
             String s = jTextArea1.getText();
             if (s.length() > 0) {
                 FileDialog fd = new FileDialog(this, "Save File As", FileDialog.SAVE);
-                fd.setFile(".docx");
+                fd.setFile("NewReport.pdf");
                 fd.setDirectory("c:\\windows\\temp");
                 fd.setVisible(true);
                 String path = fd.getDirectory() + fd.getFile();
