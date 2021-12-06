@@ -31,8 +31,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
      * Creates new form AddDataToJTable
      */
     private Scanner input;
-    private Schedule ParsedSchedule = new Schedule();
     private File file = null;
+    private Schedule ParsedSchedule = null;
 
     public AddDataToJTable() {
         initComponents();
@@ -42,6 +42,9 @@ public class AddDataToJTable extends javax.swing.JFrame {
         if(filepath == null){
             return null;
         }
+
+        Schedule ParsedSchedule = new Schedule();
+
         int amount = 0;
         int amount_small = 0;
         int amount_med = 0;
@@ -391,9 +394,11 @@ public class AddDataToJTable extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         jTextArea1.setText("");
+
         showMessageDialog(null, "Program will run after ok is clicked give \n approx. 60 - 180s for run time",
                 "Notification", JOptionPane.INFORMATION_MESSAGE);
-        if(ParsedSchedule==null){
+
+        if(ParsedSchedule == null){
             showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
