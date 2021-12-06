@@ -132,6 +132,11 @@ public class AddDataToJTable extends javax.swing.JFrame {
         int current_xlarge = 0;
         int current_xxlarge = 0;
         int current_massive = 0;
+
+        for (int i = 0; i < amount; i++) {
+            To_Teach[i] = i + 1;
+        }
+
         try
         {
             //parsing a CSV file into BufferedReader class constructor
@@ -156,8 +161,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
                         ParsedSchedule.addProfessor(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2],
                                 Integer.parseInt(ScheduleLine[3]), Integer.parseInt(ScheduleLine[4]));
                     }
-                    To_Teach[current] = Integer.parseInt(ScheduleLine[1]);
-                    current++;
                 }
                 else if (ScheduleLine[0].equals("Course")) {
                     ParsedSchedule.addCourse(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], ScheduleLine[3], To_Teach);
@@ -389,7 +392,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         jTextArea1.setText("");
-        showMessageDialog(null, "Program is running give \n approx. 60 - 180s for run time",
+        showMessageDialog(null, "Program will run after ok is clicked give \n approx. 60 - 180s for run time",
                 "Notification", JOptionPane.INFORMATION_MESSAGE);
         if(ParsedSchedule==null){
             showMessageDialog(null, "No File imported, aborting schdule creation", "Error", JOptionPane.WARNING_MESSAGE);
@@ -426,8 +429,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
         }
 
         Class classes[] = ParsedSchedule.getClasses();
-        jTextArea1.append("CLASS:"
-                + "COURSE:"
+        jTextArea1.append("COURSE:"
                 + "ROOM:"
                 + "PROFESSOR:"
                 + "DATE/TIME:" +"\n");
