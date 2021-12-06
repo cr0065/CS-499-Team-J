@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Took out the system.out.println">
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Population.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Schedule.java" afterDir="false" />
-    </list>
+    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="More updated stuff typos and what not" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -177,7 +171,21 @@
       <option name="project" value="LOCAL" />
       <updated>1638745015716</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Just some name and whitespace updates">
+      <created>1638813081092</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1638813081092</updated>
+    </task>
+    <task id="LOCAL-00018" summary="More updated stuff typos and what not">
+      <created>1638813343174</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1638813343174</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,7 +217,9 @@
     <MESSAGE value="Fixed the rest of the out of index errors" />
     <MESSAGE value="fixed the document output" />
     <MESSAGE value="Took out the system.out.println" />
-    <option name="LAST_COMMIT_MESSAGE" value="Took out the system.out.println" />
+    <MESSAGE value="Just some name and whitespace updates" />
+    <MESSAGE value="More updated stuff typos and what not" />
+    <option name="LAST_COMMIT_MESSAGE" value="More updated stuff typos and what not" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
