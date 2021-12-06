@@ -11,8 +11,6 @@ public class GeneticAlgorithm {
     private int count;
     protected int tournamentSize;
 
-
-
    //initializing variables
     public GeneticAlgorithm(int populationSize, double rateOfMutation, double rateOfCrossover, int count, int tournamentSize) {
         this.populationSize = populationSize;
@@ -60,23 +58,23 @@ public class GeneticAlgorithm {
         Population newPopulation = new Population(population.size());
 
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
-            Individual parent1 = population.getFittest(populationIndex);
+            Individual Compare1 = population.getFittest(populationIndex);
             if (this.rateOfCrossover > Math.random() && populationIndex > this.count) {
-                Individual offspring = new Individual(parent1.getChromosomeLength());
-                Individual parent2 = selectionFunction(population);
-                for (int geneIndex = 0; geneIndex < parent1.getChromosomeLength(); geneIndex++) {
+                Individual results = new Individual(Compare1.getChromosomeLength());
+                Individual Compare2 = selectionFunction(population);
+                for (int geneIndex = 0; geneIndex < Compare1.getChromosomeLength(); geneIndex++) {
                     //using half parents 1 genes and the other half of parent 2
                     if (0.50 > Math.random()) {
-                        offspring.setGene(geneIndex, parent1.getGene(geneIndex));
+                        results.setGene(geneIndex, Compare1.getGene(geneIndex));
                     } else {
-                        offspring.setGene(geneIndex, parent2.getGene(geneIndex));
+                        results.setGene(geneIndex, Compare2.getGene(geneIndex));
                     }
                 }
 
-                newPopulation.setIndividual(populationIndex, offspring);
+                newPopulation.setIndividual(populationIndex, results);
             } else {
 
-                newPopulation.setIndividual(populationIndex, parent1);
+                newPopulation.setIndividual(populationIndex, Compare1);
             }
         }
         return newPopulation;

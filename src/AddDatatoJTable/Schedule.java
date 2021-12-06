@@ -96,14 +96,14 @@ public class Schedule {
 
 
 
-    public void addProfessor(int professorId, String professorName, int preferedroom){
-        this.professors.put(professorId, new Professor(professorId, professorName, preferedroom));
+    public void addProfessor(int professorId, String professorName, int preferred_room){
+        this.professors.put(professorId, new Professor(professorId, professorName, preferred_room));
     }
 
 
 
-    public void addProfessor(int professorId, String professorName, int preferedroom, int preferedtime){
-        this.professors.put(professorId, new Professor(professorId, professorName, preferedroom, preferedtime));
+    public void addProfessor(int professorId, String professorName, int preferred_room, int preferred_time){
+        this.professors.put(professorId, new Professor(professorId, professorName, preferred_room, preferred_time));
     }
 
 
@@ -173,8 +173,8 @@ public class Schedule {
     }
 
     public Classroom getRandomRoom() {
-        Object[] roomsArray = this.rooms.values().toArray();
-        Classroom room = (Classroom) roomsArray[(int) (roomsArray.length * Math.random())];
+        Object[] rooms = this.rooms.values().toArray();
+        Classroom room = (Classroom) rooms[(int) (rooms.length * Math.random())];
         return room;
     }
 
@@ -241,7 +241,6 @@ public class Schedule {
             if (roomCapacity < groupSize) {
                 clashes = clashes-33*size;
             }
-
             //room occupied
             for (Class classB : this.classes) {
                 if (classA.getRoomId() == classB.getRoomId()&& classA.getTimeslotId() == classB.getTimeslotId()&& classA.getClassId() != classB.getClassId()) {
@@ -249,7 +248,6 @@ public class Schedule {
                     break;
                 }
             }
-
             //professor available
             for (Class classB : this.classes) {
                 if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId() && classA.getClassId() != classB.getClassId()) {
@@ -257,7 +255,6 @@ public class Schedule {
                     break;
                 }
             }
-
             //professor preferred room check
             for (Class classB : this.classes) {
                 int tmp_Prof= classB.getProfessorId();
@@ -266,7 +263,6 @@ public class Schedule {
                     clashes++;
                 }
             }
-
             // professor preferred time
             for (Class classB : this.classes) {
                 int tmp_Prof= classB.getProfessorId();
@@ -276,7 +272,6 @@ public class Schedule {
                 }
             }
         }
-
         return clashes;
     }
 
