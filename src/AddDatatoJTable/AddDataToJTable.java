@@ -45,6 +45,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
         jTextArea1.setText("");
 
+        System.out.println("File path: " + filepath);
+
         Schedule ParsedSchedule = new Schedule();
 
         int amount = 0;
@@ -80,7 +82,14 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
                 String[] ScheduleLine = line.split(splitBy);    // use comma as separator
 
-                if(ScheduleLine[0].equals("Room")) {
+                System.out.println(ScheduleLine[0]);
+                System.out.println(ScheduleLine[1]);
+
+                if(ScheduleLine[0].equals("\uFEFFRoom")) {
+                    jTextArea1.append("Room," + ScheduleLine[1] + ","
+                            + ScheduleLine[2] + "," + ScheduleLine[3] + "\n");
+                }
+                else if (ScheduleLine[0].equals("Room")) {
                     jTextArea1.append("Room," + ScheduleLine[1] + ","
                             + ScheduleLine[2] + "," + ScheduleLine[3] + "\n");
                 }
@@ -146,12 +155,18 @@ public class AddDataToJTable extends javax.swing.JFrame {
         {
             //parsing a CSV file into BufferedReader class constructor
             BufferedReader file = new BufferedReader(new FileReader(filepath.getAbsolutePath()));
+
+            System.out.print(filepath.getAbsolutePath());
+
             while ((line = file.readLine()) != null)   //returns a Boolean value
             {
 
                 String[] ScheduleLine = line.split(splitBy);    // use comma as separator
 
-                if(ScheduleLine[0].equals("Room")) {
+                if(ScheduleLine[0].equals("\uFEFFRoom")) {
+                    ParsedSchedule.addRoom(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], Integer.parseInt(ScheduleLine[3]));
+                }
+                else if (ScheduleLine[0].equals("Room")) {
                     ParsedSchedule.addRoom(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], Integer.parseInt(ScheduleLine[3]));
                 }
                 else if (ScheduleLine[0].equals("Instructor")) {
