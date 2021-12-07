@@ -45,8 +45,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
         jTextArea1.setText("");
 
-        System.out.println("File path: " + filepath);
-
         Schedule ParsedSchedule = new Schedule();
 
         int amount = 0;
@@ -55,6 +53,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
         int amount_large = 0;
         int amount_xlarge = 0;
         int amount_xxlarge = 0;
+        int amount_xxxlarge = 0;
+        int amount_xxxxlarge = 0;
         int amount_massive = 0;
         String line = "";
         String splitBy = ",";
@@ -81,9 +81,6 @@ public class AddDataToJTable extends javax.swing.JFrame {
             {
 
                 String[] ScheduleLine = line.split(splitBy);    // use comma as separator
-
-                System.out.println(ScheduleLine[0]);
-                System.out.println(ScheduleLine[1]);
 
                 if(ScheduleLine[0].equals("\uFEFFRoom")) {
                     jTextArea1.append("Room," + ScheduleLine[1] + ","
@@ -118,6 +115,12 @@ public class AddDataToJTable extends javax.swing.JFrame {
                     else if (Integer.parseInt(ScheduleLine[4]) <= 60) {
                         amount_xxlarge++;
                     }
+                    else if (Integer.parseInt(ScheduleLine[4]) <= 70) {
+                        amount_xxxlarge++;
+                    }
+                    else if (Integer.parseInt(ScheduleLine[4]) > 70 || Integer.parseInt(ScheduleLine[4]) < 120) {
+                        amount_xxxxlarge++;
+                    }
                     else if (Integer.parseInt(ScheduleLine[4]) >= 120) {
                         amount_massive++;
                     }
@@ -138,6 +141,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
         int[] large = new int[amount_large];
         int[] xlarge = new int[amount_xlarge];
         int[] xxlarge = new int[amount_xxlarge];
+        int[] xxxlarge = new int[amount_xxxlarge];
+        int[] xxxxlarge = new int[amount_xxxxlarge];
         int[] massive = new int[amount_massive];
         int current = 0;
         int current_small = 0;
@@ -145,6 +150,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
         int current_large = 0;
         int current_xlarge = 0;
         int current_xxlarge = 0;
+        int current_xxxlarge = 0;
+        int current_xxxxlarge = 0;
         int current_massive = 0;
 
         for (int i = 0; i < amount; i++) {
@@ -204,6 +211,17 @@ public class AddDataToJTable extends javax.swing.JFrame {
                         xxlarge[current_xxlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xxlarge++;
                     }
+
+                    else if (Integer.parseInt(ScheduleLine[4]) <= 70) {
+                        xxxlarge[current_xxxlarge] = Integer.parseInt(ScheduleLine[1]);
+                        current_xxxlarge++;
+                    }
+
+                    else if (Integer.parseInt(ScheduleLine[4]) > 70 || Integer.parseInt(ScheduleLine[4]) < 120) {
+                        xxxxlarge[current_xxxxlarge] = Integer.parseInt(ScheduleLine[1]);
+                        current_xxxxlarge++;
+                    }
+
                     else if (Integer.parseInt(ScheduleLine[4]) >= 120) {
                         massive[current_massive] = Integer.parseInt(ScheduleLine[1]);
                         current_massive++;
@@ -223,6 +241,10 @@ public class AddDataToJTable extends javax.swing.JFrame {
                     ParsedSchedule.addGroup(4, 50, xlarge);
                 if (xxlarge.length != 0)
                     ParsedSchedule.addGroup(5, 60, xxlarge);
+                if (xxlarge.length != 0)
+                    ParsedSchedule.addGroup(5, 70, xxxlarge);
+                if (xxlarge.length != 0)
+                    ParsedSchedule.addGroup(5, 100, xxxxlarge);
                 if (massive.length != 0)
                     ParsedSchedule.addGroup(5, 120, massive);
             }
