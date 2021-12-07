@@ -43,6 +43,8 @@ public class AddDataToJTable extends javax.swing.JFrame {
             return null;
         }
 
+        jTextArea1.setText("");
+
         Schedule ParsedSchedule = new Schedule();
 
         int amount = 0;
