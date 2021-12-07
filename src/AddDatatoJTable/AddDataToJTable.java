@@ -200,7 +200,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
                         xlarge[current_xlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xlarge++;
                     }
-                    else if (Integer.parseInt(ScheduleLine[4]) <= 60) {
+                    else if (Integer.parseInt(ScheduleLine[4]) <= 70) {
                         xxlarge[current_xxlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xxlarge++;
                     }
@@ -222,9 +222,9 @@ public class AddDataToJTable extends javax.swing.JFrame {
                 if (xlarge.length != 0)
                     ParsedSchedule.addGroup(4, 50, xlarge);
                 if (xxlarge.length != 0)
-                    ParsedSchedule.addGroup(5, 60, xxlarge);
+                    ParsedSchedule.addGroup(5, 70, xxlarge);
                 if (massive.length != 0)
-                    ParsedSchedule.addGroup(5, 120, massive);
+                    ParsedSchedule.addGroup(6, 120, massive);
             }
         }
         catch (IOException e)

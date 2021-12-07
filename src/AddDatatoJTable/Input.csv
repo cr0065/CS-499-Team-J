@@ -14,7 +14,7 @@ Instructor,6,Allen Mary,1,10
 Instructor,7,Newman Timothy,4,null
 Course,1,CS326,Algorithm,20
 Course,2,CS421,Database,25
-Course,3,CS400,Cloud Computing,25
+Course,3,CS400,Cloud Computing,140
 Course,4,CS218,Web Development,30
 Course,5,CS310,Application Engineering,35
 Course,6,CS421,Data Science,40
