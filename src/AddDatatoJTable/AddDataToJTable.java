@@ -242,11 +242,11 @@ public class AddDataToJTable extends javax.swing.JFrame {
                 if (xxlarge.length != 0)
                     ParsedSchedule.addGroup(5, 60, xxlarge);
                 if (xxlarge.length != 0)
-                    ParsedSchedule.addGroup(5, 70, xxxlarge);
+                    ParsedSchedule.addGroup(6, 70, xxxlarge);
                 if (xxlarge.length != 0)
-                    ParsedSchedule.addGroup(5, 100, xxxxlarge);
+                    ParsedSchedule.addGroup(7, 100, xxxxlarge);
                 if (massive.length != 0)
-                    ParsedSchedule.addGroup(5, 120, massive);
+                    ParsedSchedule.addGroup(8, 120, massive);
             }
         }
         catch (IOException e)
