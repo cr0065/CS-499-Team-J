@@ -1,3 +1,9 @@
+/*
+ * Name: GeneticAlgorithm
+ * Authors: Cameron Ramos & Ben Davis
+ * Date: 12/7/2021
+ * Purpose: Manages the calculations between the genetic algorithms with fitness and crossover population
+ */
 package AddDatatoJTable;
 
 import java.util.stream.IntStream;

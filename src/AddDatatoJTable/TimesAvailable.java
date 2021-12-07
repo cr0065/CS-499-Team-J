@@ -1,3 +1,9 @@
+/*
+ * Name: TimesAbailable
+ * Authors: Cameron Ramos & Ben Davis
+ * Date: 12/7/2021
+ * Purpose: Getters and Setters for TimesAvailable
+ */
 package AddDatatoJTable;
 
 public class TimesAvailable {

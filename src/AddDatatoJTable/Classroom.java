@@ -1,3 +1,9 @@
+/*
+ * Name: Classroom
+ * Authors: Cameron Ramos & Ben Davis
+ * Date: 12/7/2021
+ * Purpose: Getters and Setters for Classroom
+ */
 package AddDatatoJTable;
 
 public class Classroom {

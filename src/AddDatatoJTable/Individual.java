@@ -1,3 +1,9 @@
+/*
+ * Name: Individual
+ * Authors: Cameron Ramos & Ben Davis
+ * Date: 12/7/2021
+ * Purpose: Manages the individual population for the genetic algorithm
+ */
 package AddDatatoJTable;
 
 public class Individual {

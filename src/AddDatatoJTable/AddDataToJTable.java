@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: AddDataToJTable
+ * Authors: Cameron Ramos & Ben Davis
+ * Date: 12/7/2021
+ * Purpose: Manages and calls the information for the Genetic Algorithm and passes it into schedule struct
+ * as well as parses the data and creates the GUI
  */
 package AddDatatoJTable;
 
@@ -82,6 +84,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
                 String[] ScheduleLine = line.split(splitBy);    // use comma as separator
 
+
                 if(ScheduleLine[0].equals("\uFEFFRoom")) {
                     jTextArea1.append("Room," + ScheduleLine[1] + ","
                             + ScheduleLine[2] + "," + ScheduleLine[3] + "\n");
@@ -118,10 +121,10 @@ public class AddDataToJTable extends javax.swing.JFrame {
                     else if (Integer.parseInt(ScheduleLine[4]) <= 70) {
                         amount_xxxlarge++;
                     }
-                    else if (Integer.parseInt(ScheduleLine[4]) > 70 || Integer.parseInt(ScheduleLine[4]) < 120) {
+                    else if (Integer.parseInt(ScheduleLine[4]) > 70 && Integer.parseInt(ScheduleLine[4]) < 120) {
                         amount_xxxxlarge++;
                     }
-                    else if (Integer.parseInt(ScheduleLine[4]) >= 120) {
+                    else if (Integer.parseInt(ScheduleLine[4]) > 120) {
                         amount_massive++;
                     }
                 }
@@ -192,37 +195,45 @@ public class AddDataToJTable extends javax.swing.JFrame {
                 else if (ScheduleLine[0].equals("Course")) {
                     ParsedSchedule.addCourse(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], ScheduleLine[3], To_Teach);
                     if(Integer.parseInt(ScheduleLine[4]) <= 20) {
+                        System.out.println("YOOOO1: " + ScheduleLine[4]);
                         small[current_small] = Integer.parseInt(ScheduleLine[1]);
                         current_small++;
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 30) {
+                        System.out.println("YOOOO2: " + ScheduleLine[4]);
                         med[current_med] = Integer.parseInt(ScheduleLine[1]);
                         current_med++;
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 40) {
+                        System.out.println("YOOOO3: " + ScheduleLine[4]);
                         large[current_large] = Integer.parseInt(ScheduleLine[1]);
                         current_large++;
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 50) {
+                        System.out.println("YOOOO4: " + ScheduleLine[4]);
                         xlarge[current_xlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xlarge++;
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 60) {
+                        System.out.println("YOOOO5: " + ScheduleLine[4]);
                         xxlarge[current_xxlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xxlarge++;
                     }
 
                     else if (Integer.parseInt(ScheduleLine[4]) <= 70) {
+                        System.out.println("YOOOO6: " + ScheduleLine[4]);
                         xxxlarge[current_xxxlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xxxlarge++;
                     }
 
-                    else if (Integer.parseInt(ScheduleLine[4]) > 70 || Integer.parseInt(ScheduleLine[4]) < 120) {
+                    else if (Integer.parseInt(ScheduleLine[4]) > 70 && Integer.parseInt(ScheduleLine[4]) < 120) {
+                        System.out.println("YOOOO7: " + ScheduleLine[4]);
                         xxxxlarge[current_xxxxlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xxxxlarge++;
                     }
 
                     else if (Integer.parseInt(ScheduleLine[4]) >= 120) {
+                        System.out.println("YOOOO8: " + ScheduleLine[4]);
                         massive[current_massive] = Integer.parseInt(ScheduleLine[1]);
                         current_massive++;
                     }
@@ -242,7 +253,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
                 if (xxlarge.length != 0)
                     ParsedSchedule.addGroup(5, 60, xxlarge);
                 if (xxlarge.length != 0)
-                    ParsedSchedule.addGroup(6, 70, xxxlarge);
+                    ParsedSchedule.addGroup(6, 80, xxxlarge);
                 if (xxlarge.length != 0)
                     ParsedSchedule.addGroup(7, 100, xxxxlarge);
                 if (massive.length != 0)
@@ -451,6 +462,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
         while (ga.isTerminating(generation, 100) == false && ga.isTerminating(population) == false) {
             System.out.println("Generation No." + generation);
+            System.out.println(population.getFittest(0).getFitness());
 
             population = ga.crossoverPopulation(population);
             population = ga.mutatingPopulation(population, ParsedSchedule);
@@ -466,6 +478,18 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
         if(population.getFittest(0).getFitness() <= 0){
             showMessageDialog(null, ParsedSchedule.PrintClashes(), "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else if (ParsedSchedule.getRoom(1) == null) {
+            showMessageDialog(null, "No rooms Exists to reserve \n add more rooms",
+                    "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else if (ParsedSchedule.getProfessor(1) == null) {
+            showMessageDialog(null, "No Professor Exists to teach \n add more professors",
+                    "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else if (ParsedSchedule.getNumClasses() == 0) {
+            showMessageDialog(null, "No classes Exists \n add more class options",
+                    "Error", JOptionPane.WARNING_MESSAGE);
         }
         else{
             showMessageDialog(null, "Schedule Generation Successful", "Notification", JOptionPane.INFORMATION_MESSAGE);

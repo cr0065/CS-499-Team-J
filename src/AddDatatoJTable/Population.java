@@ -1,3 +1,9 @@
+/*
+ * Name: AddDataToJTable
+ * Authors: Cameron Ramos & Ben Davis
+ * Date: 12/7/2021
+ * Purpose:
+ */
 package AddDatatoJTable;
 
 import java.util.Arrays;

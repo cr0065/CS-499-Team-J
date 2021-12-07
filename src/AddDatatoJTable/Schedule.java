@@ -1,6 +1,8 @@
 /*
-    This class is responsible for knowing all the data for the scheduling algorithm
-    It also reads evaluate fitness
+ * Name: Schedule
+ * Authors: Cameron Ramos & Ben Davis
+ * Date: 12/7/2021
+ * Purpose: This class is responsible for knowing all the data for the scheduling algorithm it also reads evaluate fitness
  */
 
 package AddDatatoJTable;

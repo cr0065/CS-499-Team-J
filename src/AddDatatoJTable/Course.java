@@ -1,3 +1,9 @@
+/*
+ * Name: Course
+ * Authors: Cameron Ramos & Ben Davis
+ * Date: 12/7/2021
+ * Purpose: Getters and Setters for Course
+ */
 package AddDatatoJTable;
 
 public class Course {

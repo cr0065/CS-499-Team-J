@@ -1,3 +1,9 @@
+/*
+ * Name: Class
+ * Authors: Cameron Ramos & Ben Davis
+ * Date: 12/7/2021
+ * Purpose: Getters and Setters for Class
+ */
 package AddDatatoJTable;
 
 public class Class
