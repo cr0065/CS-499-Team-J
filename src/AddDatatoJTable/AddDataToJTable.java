@@ -85,21 +85,17 @@ public class AddDataToJTable extends javax.swing.JFrame {
                 String[] ScheduleLine = line.split(splitBy);    // use comma as separator
 
 
-                if(ScheduleLine[0].equals("\uFEFFRoom")) {
+                if(ScheduleLine[0].contains("Room")) {
                     jTextArea1.append("Room," + ScheduleLine[1] + ","
                             + ScheduleLine[2] + "," + ScheduleLine[3] + "\n");
                 }
-                else if (ScheduleLine[0].equals("Room")) {
-                    jTextArea1.append("Room," + ScheduleLine[1] + ","
-                            + ScheduleLine[2] + "," + ScheduleLine[3] + "\n");
-                }
-                else if (ScheduleLine[0].equals("Instructor")) {
+                else if (ScheduleLine[0].contains("Instructor")) {
                     jTextArea1.append("Instructor," + ScheduleLine[1] + ","
                             + ScheduleLine[2] + ","
                             + ScheduleLine[3] + "," + ScheduleLine[4] + "\n");
                     amount++;
                 }
-                else if (ScheduleLine[0].equals("Course")) {
+                else if (ScheduleLine[0].contains("Course")) {
                     jTextArea1.append("Course," + ScheduleLine[1] + ","
                             + ScheduleLine[2] + ","
                             + ScheduleLine[3] + "," + ScheduleLine[4] + "\n");
@@ -124,7 +120,7 @@ public class AddDataToJTable extends javax.swing.JFrame {
                     else if (Integer.parseInt(ScheduleLine[4]) > 70 && Integer.parseInt(ScheduleLine[4]) < 120) {
                         amount_xxxxlarge++;
                     }
-                    else if (Integer.parseInt(ScheduleLine[4]) > 120) {
+                    else if (Integer.parseInt(ScheduleLine[4]) >= 120) {
                         amount_massive++;
                     }
                 }
@@ -173,17 +169,14 @@ public class AddDataToJTable extends javax.swing.JFrame {
 
                 String[] ScheduleLine = line.split(splitBy);    // use comma as separator
 
-                if(ScheduleLine[0].equals("\uFEFFRoom")) {
+                if(ScheduleLine[0].contains("Room")) {
                     ParsedSchedule.addRoom(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], Integer.parseInt(ScheduleLine[3]));
                 }
-                else if (ScheduleLine[0].equals("Room")) {
-                    ParsedSchedule.addRoom(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], Integer.parseInt(ScheduleLine[3]));
-                }
-                else if (ScheduleLine[0].equals("Instructor")) {
-                    if(ScheduleLine[3].equals("null")) {
+                else if (ScheduleLine[0].contains("Instructor")) {
+                    if(ScheduleLine[3].contains("null")) {
                         ParsedSchedule.addProfessor(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2]);
                     }
-                    else if (ScheduleLine[4].equals("null")) {
+                    else if (ScheduleLine[4].contains("null")) {
                         ParsedSchedule.addProfessor(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2],
                                 Integer.parseInt(ScheduleLine[3]));
                     }
@@ -192,48 +185,40 @@ public class AddDataToJTable extends javax.swing.JFrame {
                                 Integer.parseInt(ScheduleLine[3]), Integer.parseInt(ScheduleLine[4]));
                     }
                 }
-                else if (ScheduleLine[0].equals("Course")) {
+                else if (ScheduleLine[0].contains("Course")) {
                     ParsedSchedule.addCourse(Integer.parseInt(ScheduleLine[1]), ScheduleLine[2], ScheduleLine[3], To_Teach);
                     if(Integer.parseInt(ScheduleLine[4]) <= 20) {
-                        System.out.println("YOOOO1: " + ScheduleLine[4]);
                         small[current_small] = Integer.parseInt(ScheduleLine[1]);
                         current_small++;
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 30) {
-                        System.out.println("YOOOO2: " + ScheduleLine[4]);
                         med[current_med] = Integer.parseInt(ScheduleLine[1]);
                         current_med++;
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 40) {
-                        System.out.println("YOOOO3: " + ScheduleLine[4]);
                         large[current_large] = Integer.parseInt(ScheduleLine[1]);
                         current_large++;
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 50) {
-                        System.out.println("YOOOO4: " + ScheduleLine[4]);
                         xlarge[current_xlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xlarge++;
                     }
                     else if (Integer.parseInt(ScheduleLine[4]) <= 60) {
-                        System.out.println("YOOOO5: " + ScheduleLine[4]);
                         xxlarge[current_xxlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xxlarge++;
                     }
 
                     else if (Integer.parseInt(ScheduleLine[4]) <= 70) {
-                        System.out.println("YOOOO6: " + ScheduleLine[4]);
                         xxxlarge[current_xxxlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xxxlarge++;
                     }
 
                     else if (Integer.parseInt(ScheduleLine[4]) > 70 && Integer.parseInt(ScheduleLine[4]) < 120) {
-                        System.out.println("YOOOO7: " + ScheduleLine[4]);
                         xxxxlarge[current_xxxxlarge] = Integer.parseInt(ScheduleLine[1]);
                         current_xxxxlarge++;
                     }
 
                     else if (Integer.parseInt(ScheduleLine[4]) >= 120) {
-                        System.out.println("YOOOO8: " + ScheduleLine[4]);
                         massive[current_massive] = Integer.parseInt(ScheduleLine[1]);
                         current_massive++;
                     }

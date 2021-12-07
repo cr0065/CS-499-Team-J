@@ -6,20 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="oops">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/AddDataToJTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Class.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Classroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Classroom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Population.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Professor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/Studentgroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/Studentgroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddDatatoJTable/TimesAvailable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddDatatoJTable/TimesAvailable.java" afterDir="false" />
-    </list>
+    <list default="true" id="19cf7c0e-3497-419a-bbda-c1c0c64f0a1c" name="Changes" comment="Comments" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -266,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638896247220</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Comments">
+      <created>1638917201790</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1638917201790</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -282,7 +276,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Cameron's Wonderland of Code" />
     <MESSAGE value="Small" />
     <MESSAGE value="Added GUI Fix." />
     <MESSAGE value="Merged in Cameron's Branch wonderland" />
@@ -307,7 +300,8 @@
     <MESSAGE value="Your changes" />
     <MESSAGE value="Final Changes to this thing" />
     <MESSAGE value="oops" />
-    <option name="LAST_COMMIT_MESSAGE" value="oops" />
+    <MESSAGE value="Comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
